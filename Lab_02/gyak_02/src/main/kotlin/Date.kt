@@ -1,18 +1,27 @@
 import java.time.LocalDate
 import java.time.Month
 import java.time.MonthDay
+import kotlin.Comparable
 
 class DateCurrent() {
     val year = LocalDate.now().year.toInt()
     val month = LocalDate.now().monthValue.toInt()
     val day = LocalDate.now().dayOfMonth.toInt()
 }
-class Date(val year: Int,val month: Int,val day: Int) {
+data class Date(val year: Int,val month: Int,val day: Int) : Comparable<Date>{
+    override  fun compareTo(other: Date): Int {
+        if (this.year > other.year) return 1
+        if (this.year < other.year) return -1
+        if (this.month > other.month) return 1
+        if (this.month < other.month) return -1
+        if (this.day > other.day) return 1
+        if (this.day < other.day) return -1
+        return 0
+    }
 }
 fun checkLeapYear(year: Int): Boolean {
     val isleap = if (year % 4 == 0) {
         if (year % 100 == 0) {
-            // Century Year must be divisible by 400 for Leap year
             year % 400 == 0
         } else true
     } else false;
@@ -23,7 +32,7 @@ fun checkLeapYear(year: Int): Boolean {
 fun checkValidDate(year: Int, month: Int, day: Int) : Boolean{
     var maxNumberOfDays = 30
     var isValid = false
-    if ((year > 0) and (month > 0) and (day > 0)) {
+    if ((year > 0) or (year > 2022) and (month > 0) and (day > 0)) {
         when (month)
         {
             1 -> maxNumberOfDays = 31
@@ -47,3 +56,5 @@ fun checkValidDate(year: Int, month: Int, day: Int) : Boolean{
     }
     return isValid
 }
+
+

@@ -14,7 +14,6 @@ fun List<String>.longestString(): String = this.maxBy { it.length }
 fun random(from: Int, to: Int) : Int {
     return Random().nextInt(to - from) + from
 }
-
 fun main(args: Array<String>) {
 
     // Problem 2
@@ -32,7 +31,7 @@ fun main(args: Array<String>) {
     val randomDates : MutableList<Date> = mutableListOf()
     while (randomDates.size != 10)
     {
-        val date = Date(random(10,2022),random(-10,40),random(-20,50))
+        val date = Date(random(10,2050),random(-10,40),random(-20,50))
         if (checkValidDate(date.year,date.month,date.day))
         randomDates.add(date)
         else
@@ -42,8 +41,21 @@ fun main(args: Array<String>) {
     // The right list
     randomDates.forEach { println(it) }
 
+    // Rendezes
 
+    randomDates.sort()
+    println("\n" + "Rendezve: ")
+    randomDates.forEach { println(it) }
 
+    randomDates.reverse()
+    println("\n" + "Forditva Rendezve: ")
+    randomDates.forEach { println(it) }
+
+    // Custom ordering
+//    val comparator = kotlin.Comparator(){ d1: Date, d2: Date ->
+//        return compareTo
+//    }
+//    randomDates.sortWith(comparator)
 
 
     //Problem 1
