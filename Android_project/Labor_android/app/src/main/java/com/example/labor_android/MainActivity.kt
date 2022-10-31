@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import android.content.Intent
+import android.widget.EditText
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,8 +20,18 @@ class MainActivity : AppCompatActivity() {
 
         val startButton : Button = findViewById(R.id.start_button_quiz)
         startButton.setOnClickListener{
+            Log.d(TAG,"Clicked on button")
             Toast.makeText(applicationContext,"Clicked on the button!",Toast.LENGTH_LONG).show()
             Log.d(TAG,"Clicked on button")
+            
+            // manifestbe kijavitani
+            val intent = Intent(this, SecondActivity::class.java)
+            val value : EditText = findViewById(R.id.plain_text_input)
+            // To pass any data to next activity
+            intent.putExtra("name_input", value.text.toString())
+            // start your next activity
+            Log.d(TAG,"Start new Activity")
+            startActivity(intent)
         }
     }
 

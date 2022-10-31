@@ -18,8 +18,8 @@ class QuizStartFragment : Fragment(R.layout.fragment_start_quiz) {
 
         val startButton = view.findViewById<Button>(R.id.start_button_quiz)
 
-        startButton.setOnClickListener {
-            this.findNavController().navigate(R.id.question_fragment)
-        }
+        //startButton.setOnClickListener {
+          //  this.findNavController().navigate(R.id.)
+       // }
     }
 }
