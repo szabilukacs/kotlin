@@ -18,9 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--Add Other activities like this-->
-        <activity android:name=".SecondActivity" >
-        </activity>
     </application>
 
 </manifest>
