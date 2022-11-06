@@ -85,11 +85,11 @@ object ItemRepository {
         items.add(Item(item.question, item.answers, item.correct))
     }
 
-    public fun itemsSize(items: MutableList<Item>): Int {
+    fun itemsSize(items: MutableList<Item>): Int {
         return items.size
     }
 
-    public fun randomItem(): Item {
+    fun randomItem(): Item {
         return  items[Random().nextInt(itemsSize(items) - 0) + 0]
     }
 

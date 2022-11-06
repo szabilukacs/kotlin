@@ -27,7 +27,15 @@ class QuizEndFragment : Fragment() {
         binding = FragmentQuizEndBinding.inflate(inflater, container, false)
 
         binding.correctAnswersText.text = viewModel.controller.correctAnswers.toString()
+        binding.allQuestionText.text = viewModel.num_of_questions.toString()
 
+        binding.tryAgainButton.setOnClickListener {
+            viewModel.resetQuiz()
+            print(viewModel.count_question)
+            val fragmentManager = parentFragmentManager.beginTransaction()
+            fragmentManager.replace(R.id.fragment_container_view, QuizStartFragment())
+            fragmentManager.commit()
+        }
         return binding.root
     }
 

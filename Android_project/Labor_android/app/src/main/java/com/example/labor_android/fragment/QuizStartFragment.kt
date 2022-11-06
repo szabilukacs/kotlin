@@ -42,15 +42,15 @@ class QuizStartFragment : Fragment(R.layout.fragment_quiz_start) {
             Log.d(TAG, "Clicked on button")
             val name = nameInput.text.toString()
             if (name.isNotBlank()) {
-
-                viewModel.controller.quiz(9) // letrehozza az elejen a kerdeseket
+                viewModel.controller.quiz(viewModel.num_of_questions) // letrehozza az elejen a kerdeseket
 
                 val fragmentTransaction = parentFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.fragment_container_view, QuestionFragment());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit()
+            } else {
+                Toast.makeText(getActivity(), "Type your name", Toast.LENGTH_LONG).show()
             }
-            Toast.makeText(getActivity(), "Type your name", Toast.LENGTH_LONG).show()
         }
     }
 

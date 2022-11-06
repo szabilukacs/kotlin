@@ -3,6 +3,7 @@ package com.example.labor_android.fragment
 import ItemController
 import ItemRepository
 import ItemService
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.example.labor_android.R
 import com.example.labor_android.databinding.FragmentQuestionBinding
@@ -41,7 +44,7 @@ class QuestionFragment : Fragment() {
         binding.radioButton2.text = viewModel.controller.items[viewModel.count_question].answers[1]
         binding.radioButton3.text = viewModel.controller.items[viewModel.count_question].answers[2]
         binding.radioButton4.text = viewModel.controller.items[viewModel.count_question].answers[3]
-        if (viewModel.count_question == 8)
+        if (viewModel.count_question == 7)
             binding.nextQuestionButton.text = "Finish Quiz"
         else
             binding.nextQuestionButton.text = "Next question"
@@ -64,7 +67,6 @@ class QuestionFragment : Fragment() {
             val checkedId = binding.RadioGroup.checkedRadioButtonId
 
             if (checkedId == -1) {
-                //viewModel.count_question--
                 Toast.makeText(activity, "Answer the question!", Toast.LENGTH_LONG).show()
             } else {
                 var correctAnswerId = viewModel.controller.items[viewModel.count_question].correct
@@ -86,8 +88,36 @@ class QuestionFragment : Fragment() {
                 fragmentTransaction.commit()
             }
 
-
         }
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback = object : OnBackPressedCallback(
+            true
+        ) {
+            override fun handleOnBackPressed() {
+                alertUser()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            requireActivity(),
+            callback
+        )
+    }
+    fun alertUser() {
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setTitle("WARNING!")
+        builder.setMessage("Are you sure you want to finish the quiz? Your progress will be lost!")
+        builder.setPositiveButton("Yes") { dialog, which ->
+            viewModel.resetQuiz()
+            val fragmentManager = parentFragmentManager.beginTransaction()
+            fragmentManager.replace(R.id.fragment_container_view, QuizStartFragment())
+            fragmentManager.commit()
+        }
+        builder.setNegativeButton("No, I want to continue") { dialog, which ->
+            dialog.cancel()
+        }
+        builder.show()
     }
 
 

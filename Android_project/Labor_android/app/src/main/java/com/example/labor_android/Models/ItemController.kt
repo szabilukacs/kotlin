@@ -1,7 +1,6 @@
 class ItemController(private val itemService: ItemService) {
 
-    public var correctAnswers = 0
-    var incorrectAnswers = 0
+    var correctAnswers = 0
     lateinit var items: List<Item>
 
     fun quiz(num: Int){
@@ -18,12 +17,10 @@ class ItemController(private val itemService: ItemService) {
 
             if(answer?.toInt() == item.correct){
                 correctAnswers++
-            }else{
-                incorrectAnswers++
             }
             println()
         }
-        println("Correct answers: $correctAnswers \nIncorrect answers: $incorrectAnswers")
+        //println("Correct answers: $correctAnswers \nIncorrect answers: $incorrectAnswers")
     }
 
 }
