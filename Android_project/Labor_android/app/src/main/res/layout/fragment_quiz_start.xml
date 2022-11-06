@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/plain_text_input"
+        android:id="@+id/name_input"
         style="@style/Widget.AppCompat.EditText"
         android:layout_width="307dp"
         android:layout_height="55dp"

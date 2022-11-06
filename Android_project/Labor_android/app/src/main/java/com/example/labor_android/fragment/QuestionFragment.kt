@@ -1,60 +1,94 @@
 package com.example.labor_android.fragment
 
+import ItemController
+import ItemRepository
+import ItemService
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.labor_android.R
+import com.example.labor_android.databinding.FragmentQuestionBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [QuestionFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class QuestionFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private val TAG: String = javaClass.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
+
+
+    private lateinit var binding: FragmentQuestionBinding
+    private lateinit var viewModel: QuizViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question, container, false)
+
+        viewModel = ViewModelProvider(requireActivity())[QuizViewModel::class.java]
+        binding = FragmentQuestionBinding.inflate(inflater, container, false)
+
+        binding.theQuestion.text = viewModel.controller.items[viewModel.count_question].question
+        binding.radioButton1.text = viewModel.controller.items[viewModel.count_question].answers[0]
+        binding.radioButton2.text = viewModel.controller.items[viewModel.count_question].answers[1]
+        binding.radioButton3.text = viewModel.controller.items[viewModel.count_question].answers[2]
+        binding.radioButton4.text = viewModel.controller.items[viewModel.count_question].answers[3]
+        if (viewModel.count_question == 8)
+            binding.nextQuestionButton.text = "Finish Quiz"
+        else
+            binding.nextQuestionButton.text = "Next question"
+
+        println(viewModel.controller.items[viewModel.count_question].question)
+        println(viewModel.count_question)
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment QuestionFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            QuestionFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        super.onViewCreated(view, savedInstanceState)
+
+        val nextQuestionButton = binding.nextQuestionButton
+
+
+        nextQuestionButton.setOnClickListener {
+            Log.d(TAG, "Clicked on the next/finish button")
+            val checkedId = binding.RadioGroup.checkedRadioButtonId
+
+            if (checkedId == -1) {
+                //viewModel.count_question--
+                Toast.makeText(activity, "Answer the question!", Toast.LENGTH_LONG).show()
+            } else {
+                var correctAnswerId = viewModel.controller.items[viewModel.count_question].correct
+                if (requireView().findViewById<RadioButton>(checkedId).text == viewModel.controller.items[viewModel.count_question].answers[correctAnswerId - 1])
+                    viewModel.controller.correctAnswers++
+
+                binding.RadioGroup.clearCheck()
+
+                println("chechkedid" + checkedId)
+                println("correctanswerid" + correctAnswerId)
+                println(viewModel.controller.items[viewModel.count_question].answers[correctAnswerId - 1])
+                viewModel.count_question++
+                val fragmentTransaction = parentFragmentManager.beginTransaction()
+                if (viewModel.count_question == 8)
+                    fragmentTransaction.replace(R.id.fragment_container_view, QuizEndFragment())
+                else
+                    fragmentTransaction.replace(R.id.fragment_container_view, QuestionFragment())
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit()
             }
+
+
+        }
     }
+
+
 }

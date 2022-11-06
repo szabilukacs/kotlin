@@ -1,5 +1,8 @@
 package com.example.labor_android.fragment
 
+import ItemController
+import ItemRepository
+import ItemService
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,13 +11,18 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.labor_android.R
 import com.example.labor_android.databinding.FragmentQuizStartBinding
 
 class QuizStartFragment : Fragment(R.layout.fragment_quiz_start) {
 
-    lateinit var binding : FragmentQuizStartBinding
+    private val TAG: String = javaClass.simpleName
+    private lateinit var viewModel: QuizViewModel
+
+    lateinit var binding: FragmentQuizStartBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,20 +32,26 @@ class QuizStartFragment : Fragment(R.layout.fragment_quiz_start) {
         return binding.root
     }
 
-   private val TAG: String = javaClass.simpleName
-
-    fun onCreateView(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity())[QuizViewModel::class.java]
+        val startButton = binding.startButtonQuiz
+        val nameInput = binding.nameInput
+        startButton.setOnClickListener {
+            Log.d(TAG, "Clicked on button")
+            val name = nameInput.text.toString()
+            if (name.isNotBlank()) {
 
-        val startButton = view.findViewById<Button>(R.id.start_button_quiz)
+                viewModel.controller.quiz(9) // letrehozza az elejen a kerdeseket
 
-        startButton.setOnClickListener{
-            Toast.makeText(getActivity(),"Clicked on the button!",Toast.LENGTH_LONG).show()
-            Log.d(TAG,"Clicked on button")
-
+                val fragmentTransaction = parentFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment_container_view, QuestionFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit()
+            }
+            Toast.makeText(getActivity(), "Type your name", Toast.LENGTH_LONG).show()
         }
-
     }
 
 }
