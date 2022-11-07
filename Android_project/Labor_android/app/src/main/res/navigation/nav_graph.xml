@@ -28,4 +28,13 @@
             android:id="@+id/action_quizStartFragment_to_questionFragment22"
             app:destination="@id/questionFragment2" />
     </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.labor_android.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_quizStartFragment"
+            app:destination="@id/quizStartFragment" />
+    </fragment>
 </navigation>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu1"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="Home" />
+    <item
+        android:id="@+id/menu2"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="Quiz time" />
+    <item
+        android:id="@+id/menu3"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="Profile" />
+    <item
+        android:id="@+id/menu4"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="List of questions" />
+    <item
+        android:id="@+id/menu5"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="New question" />
+</menu>
