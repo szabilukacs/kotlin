@@ -1,4 +1,4 @@
-package com.example.labor_android.fragment
+package com.example.labor_android.viewmodel
 
 import ItemController
 import ItemRepository
@@ -9,6 +9,7 @@ class QuizViewModel : ViewModel() {
     val num_of_questions = 9
     var count_question = 0 // 9 kerdes van -> max 8
     val controller = ItemController(ItemService(ItemRepository))
+    lateinit var player_name: String
 
     fun resetQuiz()
     {

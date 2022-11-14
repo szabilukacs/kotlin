@@ -11,6 +11,7 @@
         android:name="com.example.labor_android.fragment.QuizStartFragment"
         android:layout_width="393dp"
         android:layout_height="723dp"
+        app:navGraph="@navigation/nav_graph"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"

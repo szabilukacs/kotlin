@@ -1,8 +1,5 @@
 package com.example.labor_android.fragment
 
-import ItemController
-import ItemRepository
-import ItemService
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.example.labor_android.R
 import com.example.labor_android.databinding.FragmentQuestionBinding
+import com.example.labor_android.viewmodel.QuizViewModel
 
 
 class QuestionFragment : Fragment() {

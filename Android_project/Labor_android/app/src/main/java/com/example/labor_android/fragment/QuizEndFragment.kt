@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.labor_android.R
-import com.example.labor_android.databinding.FragmentQuestionBinding
 import com.example.labor_android.databinding.FragmentQuizEndBinding
+import com.example.labor_android.viewmodel.QuizViewModel
 
 class QuizEndFragment : Fragment() {
 
@@ -28,6 +28,7 @@ class QuizEndFragment : Fragment() {
 
         binding.correctAnswersText.text = viewModel.controller.correctAnswers.toString()
         binding.allQuestionText.text = viewModel.num_of_questions.toString()
+        binding.playerName.text = viewModel.player_name
 
         binding.tryAgainButton.setOnClickListener {
             viewModel.resetQuiz()

@@ -37,6 +37,8 @@ class HomeFragment : Fragment() {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit()
         }
+        // Madj kesobb
+
 //        val readButton = binding.readQuestionsButton
 //        readButton.setOnClickListener {
 //            Log.d(TAG, "Clicked on button")
