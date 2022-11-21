@@ -2,28 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu1"
+        android:id="@+id/homeFragment"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/home"
         android:title="Home" />
     <item
-        android:id="@+id/menu2"
+        android:id="@+id/quizStartFragment"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/quiz_time"
         android:title="Quiz time" />
     <item
-        android:id="@+id/menu3"
+        android:id="@+id/profileFragment"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/user"
         android:title="Profile" />
     <item
-        android:id="@+id/menu4"
+        android:id="@+id/questioListFragment"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/conversation"
         android:title="List of questions" />
     <item
-        android:id="@+id/menu5"
+        android:id="@+id/questionAddFragment"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/add"
         android:title="New question" />
 </menu>

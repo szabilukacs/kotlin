@@ -8,7 +8,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
-        android:name="com.example.labor_android.fragment.QuizStartFragment"
+        android:name="com.example.labor_android.fragment.HomeFragment"
         android:layout_width="393dp"
         android:layout_height="723dp"
         app:navGraph="@navigation/nav_graph"
