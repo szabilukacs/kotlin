@@ -1,10 +1,10 @@
 package com.zoltanlorinczi.project_retrofit.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.zoltanlorinczi.project_retorfit.R
@@ -14,13 +14,13 @@ import com.zoltanlorinczi.project_retrofit.api.model.TaskResponse
  * Author:  Zoltan Lorinczi
  * Date:    12/6/2021
  */
-class MarketDataAdapter(
-    private var list: ArrayList<TaskResponse>,
-    private val context: Context,
-    private val listener: OnItemClickListener,
-    private val listener2: OnItemLongClickListener
+class TasksListAdapter(
+        private var list: ArrayList<TaskResponse>,
+        private val context: Context,
+        private val listener: OnItemClickListener,
+        private val listener2: OnItemLongClickListener
 ) :
-    RecyclerView.Adapter<MarketDataAdapter.DataViewHolder>() {
+        RecyclerView.Adapter<TasksListAdapter.DataViewHolder>() {
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
@@ -32,11 +32,10 @@ class MarketDataAdapter(
 
     // 1. user defined ViewHolder type - Embedded class!
     inner class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener, View.OnLongClickListener {
-        val textView_name: TextView = itemView.findViewById(R.id.textView_name_item_layout)
-        val textView_price: TextView = itemView.findViewById(R.id.textView_price_item_layout)
-        val textView_seller: TextView = itemView.findViewById(R.id.textView_seller_item_layout)
-        val imageView: ImageView = itemView.findViewById(R.id.imageView_item_layout)
+            View.OnClickListener, View.OnLongClickListener {
+        val taskTitleTextView: TextView = itemView.findViewById(R.id.task_title_view)
+        val taskDescriptionTextView: TextView = itemView.findViewById(R.id.task_description_view)
+        val taskPriorityTextView: TextView = itemView.findViewById(R.id.task_priority_view)
 
         init {
             itemView.setOnClickListener(this)
@@ -58,7 +57,7 @@ class MarketDataAdapter(
 
     // 2. Called only a few times = number of items on screen + a few more ones
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.tasks_list_item, parent, false)
         return DataViewHolder(itemView)
     }
 
@@ -67,12 +66,19 @@ class MarketDataAdapter(
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         val currentItem = list[position]
 
-        holder.textView_name.text = currentItem.title
-        //holder.textView_price.text = currentItem.pricePerUnit
-        //holder.textView_seller.text = currentItem.username
+        holder.taskTitleTextView.text = currentItem.title
+        holder.taskDescriptionTextView.text = currentItem.description
+
+        if (currentItem.priority == 0) {
+            holder.taskPriorityTextView.setBackgroundColor(Color.RED)
+        } else if (currentItem.priority == 1) {
+            holder.taskPriorityTextView.setBackgroundColor(Color.YELLOW)
+        } else if (currentItem.priority == 2) {
+            holder.taskPriorityTextView.setBackgroundColor(Color.GREEN)
+        }
 
 //        Glide.with(this.context)
-//            .load(R.drawable.ic_user)
+//            .load(R.drawable.ic_launcher_background)
 //            .override(200, 200)
 //            .into(holder.imageView);
     }

@@ -23,10 +23,10 @@ class TasksViewModel(private val repository: ThreeTrackerRepository) : ViewModel
     var products: MutableLiveData<List<TaskResponse>> = MutableLiveData()
 
     init {
-        getProducts()
+        getTasks()
     }
 
-    private fun getProducts() {
+    private fun getTasks() {
         viewModelScope.launch {
             try {
                 val token: String? = App.sharedPreferences.getStringValue(

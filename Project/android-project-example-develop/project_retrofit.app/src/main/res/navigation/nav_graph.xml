@@ -18,8 +18,8 @@
 
   <fragment
     android:id="@+id/listFragment"
-    android:name="com.zoltanlorinczi.project_retrofit.fragment.ListFragment"
+    android:name="com.zoltanlorinczi.project_retrofit.fragment.TasksListFragment"
     android:label="ListFragment"
-    tools:layout="@layout/fragment_list">
+    tools:layout="@layout/fragment_tasks_list">
   </fragment>
 </navigation>

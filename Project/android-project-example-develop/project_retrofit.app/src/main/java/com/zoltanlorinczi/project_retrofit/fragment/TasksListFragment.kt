@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zoltanlorinczi.project_retorfit.R
-import com.zoltanlorinczi.project_retrofit.adapter.MarketDataAdapter
+import com.zoltanlorinczi.project_retrofit.adapter.TasksListAdapter
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
+import com.zoltanlorinczi.project_retrofit.api.model.TaskResponse
 import com.zoltanlorinczi.project_retrofit.viewmodel.TasksViewModel
 import com.zoltanlorinczi.project_retrofit.viewmodel.TasksViewModelFactory
 
@@ -20,8 +21,8 @@ import com.zoltanlorinczi.project_retrofit.viewmodel.TasksViewModelFactory
  * Author:  Zoltan Lorinczi
  * Date:    12/2/2021
  */
-class ListFragment : Fragment(R.layout.fragment_list), MarketDataAdapter.OnItemClickListener,
-    MarketDataAdapter.OnItemLongClickListener {
+class TasksListFragment : Fragment(R.layout.fragment_tasks_list), TasksListAdapter.OnItemClickListener,
+        TasksListAdapter.OnItemLongClickListener {
 
     companion object {
         private val TAG: String = javaClass.simpleName
@@ -29,7 +30,7 @@ class ListFragment : Fragment(R.layout.fragment_list), MarketDataAdapter.OnItemC
 
     private lateinit var tasksViewModel: TasksViewModel
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: MarketDataAdapter
+    private lateinit var adapter: TasksListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,32 +39,32 @@ class ListFragment : Fragment(R.layout.fragment_list), MarketDataAdapter.OnItemC
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_tasks_list, container, false)
         recyclerView = view.findViewById(R.id.recycler_view)
         setupRecyclerView()
         tasksViewModel.products.observe(viewLifecycleOwner) {
-//            adapter.setData(tasksViewModel.products.value as ArrayList<TaskResponse>)
-//            adapter.notifyDataSetChanged()
             Log.d(TAG, "Tasks list = $it")
+            adapter.setData(tasksViewModel.products.value as ArrayList<TaskResponse>)
+            adapter.notifyDataSetChanged()
         }
 
         return view
     }
 
     private fun setupRecyclerView() {
-        adapter = MarketDataAdapter(ArrayList(), this.requireContext(), this, this)
+        adapter = TasksListAdapter(ArrayList(), this.requireContext(), this, this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                activity,
-                DividerItemDecoration.VERTICAL
-            )
+                DividerItemDecoration(
+                        activity,
+                        DividerItemDecoration.VERTICAL
+                )
         )
         recyclerView.setHasFixedSize(true)
     }

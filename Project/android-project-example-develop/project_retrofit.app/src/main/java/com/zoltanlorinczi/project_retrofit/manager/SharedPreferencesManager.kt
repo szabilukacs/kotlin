@@ -11,7 +11,7 @@ import android.content.SharedPreferences
  */
 class SharedPreferencesManager(context: Context) {
 
-    private val SHARED_PREFERENCES_NAME = "MarketPlaceSharedPreferences"
+    private val SHARED_PREFERENCES_NAME = "ThreeTrackerSharedPreferences"
     private var preferences: SharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
 
     companion object {
