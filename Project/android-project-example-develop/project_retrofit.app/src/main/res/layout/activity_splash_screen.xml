@@ -28,5 +28,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--THIS IS IMAGEVIEW FOR OUR IMAGE IN SPLASH SCREEN-->
+    <!--YOU CAN ADD YOUR IMAGE TO DRAWABLES.
+        HERE geeksforgeeks IS THE NAME OF IMAGE-->
+    <ImageView
+        android:id="@+id/SplashScreenImage"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:src="@drawable/id_tracker_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
