@@ -25,5 +25,5 @@ interface UserApiService {
     suspend fun getTasks(@Header(BackendConstants.HEADER_TOKEN) token: String): Response<List<TaskResponse>>
 
     @GET(BackendConstants.GET_MY_USER_URL)
-    suspend fun getMyUser(@Header(BackendConstants.HEADER_TOKEN) token: String): Response<List<GetMyUserResponse>>
+    suspend fun getMyUser(@Header(BackendConstants.HEADER_TOKEN) token: String): Response<GetMyUserResponse>
 }

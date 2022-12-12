@@ -29,4 +29,10 @@ data class GetMyUserResponse(
 
     @SerializedName("image")
     var image: String,
-)
+){
+    override fun toString(): String {
+        return "MyUserResponse(" +
+                "id='$id'," +
+                "last_name ='$last_name',"
+    }
+}
