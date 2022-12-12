@@ -1,5 +1,6 @@
 package com.zoltanlorinczi.project_retrofit.api
 
+import com.zoltanlorinczi.project_retrofit.api.model.GetMyUserResponse
 import com.zoltanlorinczi.project_retrofit.api.model.LoginRequestBody
 import com.zoltanlorinczi.project_retrofit.api.model.LoginResponse
 import com.zoltanlorinczi.project_retrofit.api.model.TaskResponse
@@ -22,4 +23,7 @@ interface UserApiService {
 
     @GET(BackendConstants.GET_TASKS_URL)
     suspend fun getTasks(@Header(BackendConstants.HEADER_TOKEN) token: String): Response<List<TaskResponse>>
+
+    @GET(BackendConstants.GET_MY_USER_URL)
+    suspend fun getMyUser(@Header(BackendConstants.HEADER_TOKEN) token: String): Response<List<GetMyUserResponse>>
 }
