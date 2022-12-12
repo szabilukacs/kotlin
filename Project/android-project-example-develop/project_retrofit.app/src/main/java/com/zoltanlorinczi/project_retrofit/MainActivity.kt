@@ -14,6 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //setContentView(R.layout.activity_main)
+
     }
 
     override fun onStart() {
