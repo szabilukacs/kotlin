@@ -19,7 +19,6 @@ class QuizStartFragment : Fragment(R.layout.fragment_quiz_start) {
 
     lateinit var binding: FragmentQuizStartBinding
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
