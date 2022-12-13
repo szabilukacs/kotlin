@@ -38,12 +38,12 @@ class SplashActivity : AppCompatActivity() {
         val factory = GetMyUserViewModelFactory(ThreeTrackerRepository())
         getMyUserViewModel = ViewModelProvider(this, factory)[GetMyUserViewModel::class.java]
 
-//        Log.d(TAG,
-//            "Splash - token = " + App.sharedPreferences.getStringValue(
-//                SharedPreferencesManager.KEY_TOKEN,
-//                "Empty token!"
-//            )
-//        )
+        Log.d(TAG,
+            "Splash - token = " + App.sharedPreferences.getStringValue(
+                SharedPreferencesManager.KEY_TOKEN,
+                "Empty token!"
+            )
+        )
 
         // This is used to hide the status bar and make
         // the splash screen as a full screen activity.

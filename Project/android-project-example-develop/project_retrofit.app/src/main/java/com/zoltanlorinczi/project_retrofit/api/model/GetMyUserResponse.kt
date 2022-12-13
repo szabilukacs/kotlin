@@ -32,7 +32,14 @@ data class GetMyUserResponse(
 ){
     override fun toString(): String {
         return "MyUserResponse(" +
-                "id='$id'," +
-                "last_name ='$last_name',"
+                "id=$id, " +
+                "last_name =$last_name, " +
+                "first_name = $first_name, " +
+                "email = $email, " +
+                "type = $type, " +
+                "location = $location, " +
+                "phone_number = $phone_number, " +
+                "department_id = $department_id, " +
+                "image = $image " + " )"
     }
 }
