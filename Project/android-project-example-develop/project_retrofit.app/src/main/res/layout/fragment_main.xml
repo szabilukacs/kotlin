@@ -1,14 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pattern_background"
     tools:context="com.zoltanlorinczi.project_retrofit.MainActivity">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Main Fragment lesz" />
+        android:layout_width="181dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="64dp"
+        android:text="Main Screen"
+        android:textColor="#000000"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_activities"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="252dp"
+        android:backgroundTint="#3F51B5"
+        android:text="Activities"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_my_tasks"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="324dp"
+        android:backgroundTint="#3F51B5"
+        android:text="My tasks"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_groups"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="408dp"
+        android:backgroundTint="#3F51B5"
+        android:text="View Groups"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_profile"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="484dp"
+        android:backgroundTint="#3F51B5"
+        android:text="My profile"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

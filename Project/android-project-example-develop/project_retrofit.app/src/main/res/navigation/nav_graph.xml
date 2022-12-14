@@ -33,9 +33,30 @@
     <action
         android:id="@+id/action_mainFragment_to_listFragment"
         app:destination="@id/listFragment" />
+    <action
+        android:id="@+id/action_mainFragment_to_activitiesFragment"
+        app:destination="@id/activitiesFragment" />
+    <action
+        android:id="@+id/action_mainFragment_to_groupFragment"
+        app:destination="@id/groupFragment" />
+    <action
+        android:id="@+id/action_mainFragment_to_myProfileFragment"
+        app:destination="@id/myProfileFragment" />
   </fragment>
   <fragment
       android:id="@+id/forgetPasswordFragment"
       android:name="com.zoltanlorinczi.project_retrofit.fragment.ForgetPasswordFragment"
       android:label="ForgetPasswordFragment" />
+  <fragment
+      android:id="@+id/activitiesFragment"
+      android:name="com.zoltanlorinczi.project_retrofit.fragment.ActivitiesFragment"
+      android:label="ActivitiesFragment" />
+  <fragment
+      android:id="@+id/groupFragment"
+      android:name="com.zoltanlorinczi.project_retrofit.fragment.GroupFragment"
+      android:label="GroupFragment" />
+  <fragment
+      android:id="@+id/myProfileFragment"
+      android:name="com.zoltanlorinczi.project_retrofit.fragment.MyProfileFragment"
+      android:label="MyProfileFragment" />
 </navigation>
