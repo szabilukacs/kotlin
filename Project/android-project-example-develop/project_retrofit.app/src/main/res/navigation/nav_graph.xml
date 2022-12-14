@@ -14,6 +14,9 @@
     <action
       android:id="@+id/action_loginFragment_to_listFragment"
       app:destination="@id/listFragment"/>
+    <action
+        android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
+        app:destination="@id/forgetPasswordFragment" />
   </fragment>
 
   <fragment
@@ -31,4 +34,8 @@
         android:id="@+id/action_mainFragment_to_listFragment"
         app:destination="@id/listFragment" />
   </fragment>
+  <fragment
+      android:id="@+id/forgetPasswordFragment"
+      android:name="com.zoltanlorinczi.project_retrofit.fragment.ForgetPasswordFragment"
+      android:label="ForgetPasswordFragment" />
 </navigation>

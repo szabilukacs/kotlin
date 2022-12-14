@@ -1,9 +1,6 @@
 package com.zoltanlorinczi.project_retrofit.api
 
-import com.zoltanlorinczi.project_retrofit.api.model.GetMyUserResponse
-import com.zoltanlorinczi.project_retrofit.api.model.LoginRequestBody
-import com.zoltanlorinczi.project_retrofit.api.model.LoginResponse
-import com.zoltanlorinczi.project_retrofit.api.model.TaskResponse
+import com.zoltanlorinczi.project_retrofit.api.model.*
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -26,4 +23,7 @@ interface UserApiService {
 
     @GET(BackendConstants.GET_MY_USER_URL)
     suspend fun getMyUser(@Header(BackendConstants.HEADER_TOKEN) token: String): Response<GetMyUserResponse>
+
+    @POST(BackendConstants.FORGOT_PASSWORD)
+    suspend fun forgetPassword(@Body forgetPass: ForgetPasswordRequestBody): Response<ForgetPasswordResponse>
 }

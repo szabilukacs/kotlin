@@ -24,7 +24,6 @@ class GetMyUserViewModel(private val repository: ThreeTrackerRepository) : ViewM
     }
 
     fun getMyUser() {
-        // itt majd visszateriteni a tobbi adatot is
         viewModelScope.launch {
             try {
                 val token: String? = App.sharedPreferences.getStringValue(

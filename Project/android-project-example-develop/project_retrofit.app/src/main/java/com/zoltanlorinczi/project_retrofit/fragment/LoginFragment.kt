@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -45,6 +46,7 @@ class LoginFragment : Fragment() {
         val userNameEditText: EditText = view.findViewById(R.id.edittext_name_login_fragment)
         val passwordEditText: EditText = view.findViewById(R.id.edittext_password_login_fragment)
         val button: Button = view.findViewById(R.id.button_login_fragment)
+        val hereText: TextView = view.findViewById(R.id.here_forgot_password)
 
         Log.d(
             TAG,
@@ -66,6 +68,10 @@ class LoginFragment : Fragment() {
                     findNavController().navigate(R.id.action_loginFragment_to_listFragment)
                 }
             }
+        }
+
+        hereText.setOnClickListener{
+            findNavController().navigate(R.id.forgetPasswordFragment)
         }
 
         return view

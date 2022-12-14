@@ -17,6 +17,7 @@ object BackendConstants {
     const val LOGIN_URL = "login"
     const val GET_TASKS_URL = "task/getTasks"
     const val GET_MY_USER_URL = "user"
+    const val FORGOT_PASSWORD = "users/forgetPassword"
     /**
      * Header values.
      */
