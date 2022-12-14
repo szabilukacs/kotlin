@@ -1,15 +1,8 @@
 package com.zoltanlorinczi.project_retrofit.api
 
-import com.zoltanlorinczi.project_retrofit.api.model.GetMyUserResponse
-import com.zoltanlorinczi.project_retrofit.api.model.LoginRequestBody
-import com.zoltanlorinczi.project_retrofit.api.model.LoginResponse
-import com.zoltanlorinczi.project_retrofit.api.model.TaskResponse
+import com.zoltanlorinczi.project_retrofit.api.model.*
 import retrofit2.Response
 
-/**
- * Author:  Zoltan Lorinczi
- * Date:    11/8/2021
- */
 class ThreeTrackerRepository {
 
     /**
@@ -26,6 +19,10 @@ class ThreeTrackerRepository {
 
     suspend fun getMyUser(token: String): Response<GetMyUserResponse> {
         return RetrofitInstance.USER_API_SERVICE.getMyUser(token)
+    }
+
+    suspend fun forgetPassword(forgetPassBody: ForgetPasswordRequestBody): Response<ForgetPasswordResponse> {
+        return RetrofitInstance.USER_API_SERVICE.forgetPassword(forgetPassBody)
     }
 
 }
