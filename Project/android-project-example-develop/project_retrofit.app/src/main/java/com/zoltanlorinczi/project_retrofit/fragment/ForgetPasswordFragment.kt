@@ -49,7 +49,8 @@ class ForgetPasswordFragment : Fragment() {
             forgetPassViewModel.isSuccessful.observe(this.viewLifecycleOwner) {
                 Log.d(TAG, "Password send to the email successfully = $it")
                 if (it) {
-                    findNavController().navigate(R.id.loginFragment) // uzenettel menej at ide majd
+                    // uzenettel menjen at ide majd, hogy sikeres volt
+                    findNavController().navigate(R.id.loginFragment)
                 }
             }
         }
