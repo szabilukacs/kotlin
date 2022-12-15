@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, token_is_valid.toString())
 
             if (token_is_valid) {
+               // myBottomNavigationView.menu.findItem(R.id.bottom_navigation).isEnabled = false
                 navController.navigate(com.zoltanlorinczi.project_retorfit.R.id.mainScreenFragment)
             } else {
                 navController.navigate(com.zoltanlorinczi.project_retorfit.R.id.loginFragment)
@@ -72,8 +73,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.listFragment -> loadFragment(TasksListFragment())
                 R.id.groupFragment -> loadFragment(GroupFragment())
                 R.id.myProfileFragment -> loadFragment(MyProfileFragment())
+                else -> {
+                    Log.i("NavBar", "Error")
+                    false
+                }
             }
-            true
         }
     }
 

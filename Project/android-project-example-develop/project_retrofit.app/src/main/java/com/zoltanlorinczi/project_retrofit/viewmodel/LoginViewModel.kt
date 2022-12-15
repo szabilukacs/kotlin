@@ -45,6 +45,7 @@ class LoginViewModel(private val repository: ThreeTrackerRepository) : ViewModel
                 responseToken?.let {
                     token.value = it
                     App.sharedPreferences.putStringValue(SharedPreferencesManager.KEY_TOKEN, it)
+
                     isSuccessful.value = true
                 }
             } else {

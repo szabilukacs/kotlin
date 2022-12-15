@@ -30,8 +30,6 @@ class MainScreenFragment : Fragment() {
         val button3: Button = binding.buttonGroups
         val button4: Button = binding.buttonProfile
 
-
-
         button1.setOnClickListener {
             Log.d(TAG,"Click on activities")
             findNavController().navigate(R.id.activitiesFragment)

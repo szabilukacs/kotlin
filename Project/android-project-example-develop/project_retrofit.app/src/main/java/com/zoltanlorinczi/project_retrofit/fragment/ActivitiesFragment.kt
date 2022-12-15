@@ -6,15 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.zoltanlorinczi.project_retorfit.R
-import com.zoltanlorinczi.project_retorfit.databinding.FragmentMainScreenBinding
-import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
-import com.zoltanlorinczi.project_retrofit.viewmodel.LoginViewModel
-import com.zoltanlorinczi.project_retrofit.viewmodel.LoginViewModelFactory
 
 class ActivitiesFragment : Fragment() {
 
@@ -23,6 +15,9 @@ class ActivitiesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("ActivitiesFragment","Letrejott")
+        // ellenorizni a tokent
+        // lekerni az activitiket, ha rossz response akkor error oldalt betolteni
+
     }
 
     override fun onCreateView(
@@ -31,6 +26,7 @@ class ActivitiesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_activities, container, false)
+
         return view
     }
 
