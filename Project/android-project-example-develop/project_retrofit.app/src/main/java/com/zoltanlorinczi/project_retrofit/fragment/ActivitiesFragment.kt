@@ -22,6 +22,7 @@ class ActivitiesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("ActivitiesFragment","Letrejott")
     }
 
     override fun onCreateView(

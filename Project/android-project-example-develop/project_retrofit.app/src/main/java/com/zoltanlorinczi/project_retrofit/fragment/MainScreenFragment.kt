@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.zoltanlorinczi.project_retorfit.R
 import com.zoltanlorinczi.project_retorfit.databinding.FragmentMainScreenBinding
 
@@ -28,6 +29,7 @@ class MainScreenFragment : Fragment() {
         val button2: Button = binding.buttonMyTasks
         val button3: Button = binding.buttonGroups
         val button4: Button = binding.buttonProfile
+
 
 
         button1.setOnClickListener {

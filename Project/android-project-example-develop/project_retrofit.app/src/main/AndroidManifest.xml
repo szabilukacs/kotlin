@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.zoltanlorinczi.project_retrofit.MainActivity" >
+        <activity android:name="com.zoltanlorinczi.project_retrofit.MainActivity"
+            android:theme = "@style/Theme.MaterialComponents.Light">
         </activity>
 
         <meta-data

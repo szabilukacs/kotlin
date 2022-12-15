@@ -5,8 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.zoltanlorinczi.project_retorfit.R
 import com.zoltanlorinczi.project_retorfit.databinding.ActivityMainBinding
+import com.zoltanlorinczi.project_retrofit.fragment.ActivitiesFragment
+import com.zoltanlorinczi.project_retrofit.fragment.GroupFragment
+import com.zoltanlorinczi.project_retrofit.fragment.MyProfileFragment
+import com.zoltanlorinczi.project_retrofit.fragment.TasksListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        handleNavigation()  // Bottom Navigationhoz
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -54,12 +60,28 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onStop() called!")
     }
 
+    private fun handleNavigation() {
+        Log.d(TAG, "Belepett a handlenavigationba")
+        val myBottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        myBottomNavigationView.setOnItemSelectedListener() { item ->
+            when (item.itemId) {
+                R.id.activitiesFragment -> {
+                    Log.d(TAG, "Kattintott")
+                    loadFragment(ActivitiesFragment())
+                }
+                R.id.listFragment -> loadFragment(TasksListFragment())
+                R.id.groupFragment -> loadFragment(GroupFragment())
+                R.id.myProfileFragment -> loadFragment(MyProfileFragment())
+            }
+            true
+        }
+    }
+
     private fun loadFragment(fragment: Fragment): Boolean {
-        // val transaction = supportFragmentManager.beginTransaction()
-        //transaction.replace(R.id.nav_host_fragment, fragment)
-        // transaction.addToBackStack(null)
-        // transaction.commit()
-        //Navigation.findNavController(R.id.nav_host_fragment)
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.nav_host_fragment, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
         return true
     }
 }
