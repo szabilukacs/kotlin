@@ -47,7 +47,7 @@ class LoginFragment : Fragment() {
         val passwordEditText: EditText = view.findViewById(R.id.edittext_password_login_fragment)
         val button: Button = view.findViewById(R.id.button_login_fragment)
         val hereText: TextView = view.findViewById(R.id.here_forgot_password)
-
+        Log.d(TAG, "hellocska")
         Log.d(
             TAG,
             "token = " + App.sharedPreferences.getStringValue(

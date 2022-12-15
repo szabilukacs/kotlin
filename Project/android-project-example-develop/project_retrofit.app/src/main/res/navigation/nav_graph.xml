@@ -26,37 +26,41 @@
     tools:layout="@layout/fragment_tasks_list">
   </fragment>
   <fragment
-      android:id="@+id/mainFragment"
-      android:name="com.zoltanlorinczi.project_retrofit.fragment.MainFragment"
-      android:label="fragment_main"
-      tools:layout="@layout/fragment_main" >
-    <action
-        android:id="@+id/action_mainFragment_to_listFragment"
-        app:destination="@id/listFragment" />
-    <action
-        android:id="@+id/action_mainFragment_to_activitiesFragment"
-        app:destination="@id/activitiesFragment" />
-    <action
-        android:id="@+id/action_mainFragment_to_groupFragment"
-        app:destination="@id/groupFragment" />
-    <action
-        android:id="@+id/action_mainFragment_to_myProfileFragment"
-        app:destination="@id/myProfileFragment" />
-  </fragment>
-  <fragment
       android:id="@+id/forgetPasswordFragment"
       android:name="com.zoltanlorinczi.project_retrofit.fragment.ForgetPasswordFragment"
-      android:label="ForgetPasswordFragment" />
+      android:label="ForgetPasswordFragment"
+      tools:layout="@layout/fragment_forget_password"/>
   <fragment
       android:id="@+id/activitiesFragment"
       android:name="com.zoltanlorinczi.project_retrofit.fragment.ActivitiesFragment"
-      android:label="ActivitiesFragment" />
+      android:label="ActivitiesFragment"
+      tools:layout="@layout/fragment_activities"/>
   <fragment
       android:id="@+id/groupFragment"
       android:name="com.zoltanlorinczi.project_retrofit.fragment.GroupFragment"
-      android:label="GroupFragment" />
+      android:label="GroupFragment"
+      tools:layout="@layout/fragment_group"/>
   <fragment
       android:id="@+id/myProfileFragment"
       android:name="com.zoltanlorinczi.project_retrofit.fragment.MyProfileFragment"
-      android:label="MyProfileFragment" />
+      android:label="MyProfileFragment"
+      tools:layout="@layout/fragment_my_profile"/>
+  <fragment
+      android:id="@+id/mainScreenFragment"
+      android:name="com.zoltanlorinczi.project_retrofit.fragment.MainScreenFragment"
+      android:label="MainScreenFragment"
+      tools:layout="@layout/fragment_main_screen">
+    <action
+        android:id="@+id/action_mainScreenFragment_to_activitiesFragment"
+        app:destination="@id/activitiesFragment" />
+    <action
+        android:id="@+id/action_mainScreenFragment_to_groupFragment"
+        app:destination="@id/groupFragment" />
+    <action
+        android:id="@+id/action_mainScreenFragment_to_myProfileFragment"
+        app:destination="@id/myProfileFragment" />
+    <action
+        android:id="@+id/action_mainScreenFragment_to_listFragment"
+        app:destination="@id/listFragment" />
+  </fragment>
 </navigation>

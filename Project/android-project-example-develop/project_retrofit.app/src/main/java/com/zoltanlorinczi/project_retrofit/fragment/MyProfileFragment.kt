@@ -11,7 +11,6 @@ import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.zoltanlorinczi.project_retorfit.R
-import com.zoltanlorinczi.project_retorfit.databinding.FragmentMainBinding
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
 import com.zoltanlorinczi.project_retrofit.viewmodel.LoginViewModel
 import com.zoltanlorinczi.project_retrofit.viewmodel.LoginViewModelFactory

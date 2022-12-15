@@ -11,7 +11,7 @@ import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.zoltanlorinczi.project_retorfit.R
-import com.zoltanlorinczi.project_retorfit.databinding.FragmentMainBinding
+import com.zoltanlorinczi.project_retorfit.databinding.FragmentMainScreenBinding
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
 import com.zoltanlorinczi.project_retrofit.viewmodel.LoginViewModel
 import com.zoltanlorinczi.project_retrofit.viewmodel.LoginViewModelFactory
@@ -22,6 +22,15 @@ class ActivitiesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_activities, container, false)
+        return view
     }
 
 }
