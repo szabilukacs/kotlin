@@ -50,8 +50,6 @@ class MyProfileFragment : Fragment() {
         //
         // Button a log outhoz meg
         // ott torolni a tokent, majd attenni a log inhez
-        // profilkepet megcsinalni letoltse es mutassa
-        // Betenni kepkent egy sima usert, ha null az image
 
         val binding = FragmentMyProfileBinding.inflate(inflater, container, false)
 
@@ -78,23 +76,30 @@ class MyProfileFragment : Fragment() {
         binding.phoneNumber.text = phone_number
         binding.departmentId.text = department_id.toString()
 
-
         // image
+
         // Declaring and initializing the elements from the layout file
         val mImageView = binding.profileImage
         // Declaring a Bitmap local
         var mImage: Bitmap?
 
         // Declaring a webpath as a string
-        val mWebPath = image.toString()
+        val mWebPath = image
         // Declaring and initializing an Executor and a Handler
         val myExecutor = Executors.newSingleThreadExecutor()
         val myHandler = Handler(Looper.getMainLooper())
 
         myExecutor.execute {
-            mImage = mLoad(mWebPath)
-            myHandler.post {
-                mImageView.setImageBitmap(mImage)
+            if (mWebPath != null) {
+                // ha null akkor sima basic profilkepet tolt be
+                if (mWebPath == "null")
+                    mImage =
+                        mLoad("https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805__340.png")
+                else
+                    mImage = mLoad(mWebPath)
+                myHandler.post {
+                    mImageView.setImageBitmap(mImage)
+                }
             }
         }
 
