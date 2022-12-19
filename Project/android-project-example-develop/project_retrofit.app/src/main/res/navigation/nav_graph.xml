@@ -44,7 +44,11 @@
       android:id="@+id/myProfileFragment"
       android:name="com.zoltanlorinczi.project_retrofit.fragment.MyProfileFragment"
       android:label="MyProfileFragment"
-      tools:layout="@layout/fragment_my_profile"/>
+      tools:layout="@layout/fragment_my_profile">
+    <action
+        android:id="@+id/action_myProfileFragment_to_loginFragment"
+        app:destination="@id/loginFragment" />
+  </fragment>
   <fragment
       android:id="@+id/mainScreenFragment"
       android:name="com.zoltanlorinczi.project_retrofit.fragment.MainScreenFragment"

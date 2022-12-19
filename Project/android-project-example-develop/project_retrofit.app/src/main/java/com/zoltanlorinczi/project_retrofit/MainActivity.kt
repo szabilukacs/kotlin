@@ -8,10 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.zoltanlorinczi.project_retorfit.R
 import com.zoltanlorinczi.project_retorfit.databinding.ActivityMainBinding
-import com.zoltanlorinczi.project_retrofit.fragment.ActivitiesFragment
-import com.zoltanlorinczi.project_retrofit.fragment.GroupFragment
-import com.zoltanlorinczi.project_retrofit.fragment.MyProfileFragment
-import com.zoltanlorinczi.project_retrofit.fragment.TasksListFragment
+import com.zoltanlorinczi.project_retrofit.fragment.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,18 +27,11 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         // attol fuggoen meg ervenyes-e a token beallitja az egyik screent
-        val b = intent.extras
-        if (b != null) {
-            val token_is_valid = b.getBoolean("token_is_valid");
-
-            Log.d(TAG, token_is_valid.toString())
-
-            if (token_is_valid) {
-               // myBottomNavigationView.menu.findItem(R.id.bottom_navigation).isEnabled = false
-                navController.navigate(com.zoltanlorinczi.project_retorfit.R.id.mainScreenFragment)
-            } else {
-                navController.navigate(com.zoltanlorinczi.project_retorfit.R.id.loginFragment)
-            }
+        if (checkTokenIsValid()) {
+            // myBottomNavigationView.menu.findItem(R.id.bottom_navigation).isEnabled = false
+            navController.navigate(R.id.mainScreenFragment)
+        } else {
+            navController.navigate(R.id.loginFragment)
         }
 
     }
@@ -61,14 +51,35 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onStop() called!")
     }
 
+    private fun checkTokenIsValid(): Boolean {
+        val b = intent.extras
+        if (b != null) {
+            val tokenIsValid = b.getBoolean("token_is_valid");
+            return tokenIsValid
+        }
+        // sharedpreferenciesbe betenni hogy validan be van e jelentkezve
+        return false
+    }
+
     private fun handleNavigation() {
         Log.d(TAG, "Belepett a handlenavigationba")
         val myBottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        myBottomNavigationView.setOnItemSelectedListener() { item ->
+        myBottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.activitiesFragment -> {
                     Log.d(TAG, "Kattintott")
-                    loadFragment(ActivitiesFragment())
+                    if (checkTokenIsValid())
+                    {
+                        Log.d(TAG,"Act fragment")
+                        loadFragment(ActivitiesFragment())
+                    }
+
+                    else
+                    {
+                        Log.d(TAG,"Login fragment")
+                        loadFragment(LoginFragment())
+                    }
+
                 }
                 R.id.listFragment -> loadFragment(TasksListFragment())
                 R.id.groupFragment -> loadFragment(GroupFragment())

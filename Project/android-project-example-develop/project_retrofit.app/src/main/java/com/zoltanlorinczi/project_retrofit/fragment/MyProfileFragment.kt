@@ -68,13 +68,25 @@ class MyProfileFragment : Fragment() {
             App.sharedPreferences.getIntValue(SharedPreferencesManager.KEY_DEPARTMENT_ID, 0)
         val image = App.sharedPreferences.getStringValue(SharedPreferencesManager.KEY_IMAGE, "null")
 
+        val button = binding.buttonLogOut
+
         binding.firstName.text = first_name
         binding.lastName.text = last_name
         binding.email.text = email
         binding.location.text = location
         binding.type.text = type.toString()
         binding.phoneNumber.text = phone_number
-        binding.departmentId.text = department_id.toString()
+
+        button.setOnClickListener{
+            Log.d(TAG, "Clicked on Log out")
+            // delete token
+            App.sharedPreferences.putStringValue(SharedPreferencesManager.KEY_TOKEN,"")
+            //findNavController().navigate(R.id.loginFragment)
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.nav_host_fragment, LoginFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
         // image
 
