@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.zoltanlorinczi.project_retorfit.R
 import com.zoltanlorinczi.project_retrofit.adapter.TasksListAdapter
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
@@ -46,6 +47,10 @@ class TasksListFragment : Fragment(R.layout.fragment_tasks_list), TasksListAdapt
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_tasks_list, container, false)
         recyclerView = view.findViewById(R.id.recycler_view)
+        // Navbar lathato
+        val navBar: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
+        navBar.visibility = View.VISIBLE
+
         setupRecyclerView()
         tasksViewModel.products.observe(viewLifecycleOwner) {
             Log.d(TAG, "Tasks list = $it")

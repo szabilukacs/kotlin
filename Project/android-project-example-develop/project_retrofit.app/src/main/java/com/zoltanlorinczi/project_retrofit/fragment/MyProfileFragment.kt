@@ -1,10 +1,12 @@
 package com.zoltanlorinczi.project_retrofit.fragment
 
+import android.content.ContentValues
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.net.Uri
+import android.os.*
+import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,18 +14,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.zoltanlorinczi.project_retorfit.R
 import com.zoltanlorinczi.project_retorfit.databinding.FragmentMainScreenBinding
 import com.zoltanlorinczi.project_retorfit.databinding.FragmentMyProfileBinding
 import com.zoltanlorinczi.project_retrofit.App
+import com.zoltanlorinczi.project_retrofit.MainActivity
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
 import com.zoltanlorinczi.project_retrofit.manager.SharedPreferencesManager
 import com.zoltanlorinczi.project_retrofit.viewmodel.*
-import java.io.BufferedInputStream
-import java.io.IOException
-import java.io.InputStream
+import java.io.*
+import java.lang.Exception
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
@@ -77,15 +80,21 @@ class MyProfileFragment : Fragment() {
         binding.type.text = type.toString()
         binding.phoneNumber.text = phone_number
 
-        button.setOnClickListener{
+        button.setOnClickListener {
             Log.d(TAG, "Clicked on Log out")
             // delete token
-            App.sharedPreferences.putStringValue(SharedPreferencesManager.KEY_TOKEN,"")
-            //findNavController().navigate(R.id.loginFragment)
+            App.sharedPreferences.putStringValue(SharedPreferencesManager.KEY_TOKEN, "")
+            App.sharedPreferences.putBooleanValue(SharedPreferencesManager.KEY_IS_LOGGED_IN, false)
+
+//            ezzel nem megy
+//            findNavController().navigate(R.id.action_myProfileFragment_to_loginFragment)
+
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.nav_host_fragment, LoginFragment())
             transaction.addToBackStack(null)
             transaction.commit()
+
+
         }
 
         // image
@@ -102,15 +111,15 @@ class MyProfileFragment : Fragment() {
         val myHandler = Handler(Looper.getMainLooper())
 
         myExecutor.execute {
-            if (mWebPath != null) {
+            if ((mWebPath == null) || (mWebPath == "null")) {
                 // ha null akkor sima basic profilkepet tolt be
-                if (mWebPath == "null")
-                    mImage =
-                        mLoad("https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805__340.png")
-                else
-                    mImage = mLoad(mWebPath)
+                mImage =
+                    mLoad("https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805__340.png")
+            } else {
+                mImage = mLoad(mWebPath)
                 myHandler.post {
                     mImageView.setImageBitmap(mImage)
+                    DownloadImageFromPath(mWebPath, mImageView)
                 }
             }
         }
@@ -144,11 +153,36 @@ class MyProfileFragment : Fragment() {
         return null
     }
 
+    fun DownloadImageFromPath(path: String?, imageView: ImageView) {
+
+        val thread = Thread {
+            try {
+
+                val mInStream: InputStream?
+                val bmp: Bitmap?
+
+                var responseCode = -1
+                try {
+                    val url = URL(path)
+                    val con = url.openConnection() as HttpURLConnection
+                    con.doInput = true
+                    con.connect()
+                    responseCode = con.responseCode
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+                        //download
+                        mInStream = con.inputStream
+                        bmp = BitmapFactory.decodeStream(mInStream)
+                        mInStream.close()
+                        imageView.setImageBitmap(bmp)
+                    }
+                } catch (ex: Exception) {
+                    Log.e("Exception", ex.toString())
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+        thread.start()
+    }
+
 }
-
-
-
-
-
-
-

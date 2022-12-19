@@ -24,6 +24,7 @@ class MainScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainScreenBinding.inflate(inflater, container, false)
+        val navBar: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
 
         val button1: Button = binding.buttonActivities
         val button2: Button = binding.buttonMyTasks
@@ -31,18 +32,21 @@ class MainScreenFragment : Fragment() {
         val button4: Button = binding.buttonProfile
 
         button1.setOnClickListener {
-            Log.d(TAG,"Click on activities")
+            Log.d(TAG, "Click on activities")
+            navBar.selectedItemId = R.id.activitiesFragment
             findNavController().navigate(R.id.activitiesFragment)
         }
         button2.setOnClickListener {
+            navBar.selectedItemId = R.id.listFragment
             findNavController().navigate(R.id.listFragment)
         }
         button3.setOnClickListener {
-            Log.d(TAG,"Click on group")
-            // itt meg betenni a fragmentbe a viewt
+            Log.d(TAG, "Click on group")
+            navBar.selectedItemId = R.id.groupFragment
             findNavController().navigate(R.id.groupFragment)
         }
         button4.setOnClickListener {
+            navBar.selectedItemId = R.id.myProfileFragment
             findNavController().navigate(R.id.myProfileFragment)
         }
         return binding.root

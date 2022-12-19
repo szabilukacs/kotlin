@@ -12,7 +12,7 @@
         android:label="3Tracker"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge"
         android:usesCleartextTraffic="true">
         <activity android:name="com.zoltanlorinczi.project_retrofit.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
