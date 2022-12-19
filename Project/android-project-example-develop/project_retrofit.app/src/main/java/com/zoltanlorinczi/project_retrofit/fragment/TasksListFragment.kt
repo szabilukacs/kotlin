@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.zoltanlorinczi.project_retorfit.R
 import com.zoltanlorinczi.project_retrofit.adapter.TasksListAdapter
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
@@ -22,8 +21,9 @@ import com.zoltanlorinczi.project_retrofit.viewmodel.TasksViewModelFactory
  * Author:  Zoltan Lorinczi
  * Date:    12/2/2021
  */
-class TasksListFragment : Fragment(R.layout.fragment_tasks_list), TasksListAdapter.OnItemClickListener,
-        TasksListAdapter.OnItemLongClickListener {
+class TasksListFragment : Fragment(R.layout.fragment_tasks_list),
+    TasksListAdapter.OnItemClickListener,
+    TasksListAdapter.OnItemLongClickListener {
 
     companion object {
         private val TAG: String = javaClass.simpleName
@@ -40,17 +40,13 @@ class TasksListFragment : Fragment(R.layout.fragment_tasks_list), TasksListAdapt
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_tasks_list, container, false)
         recyclerView = view.findViewById(R.id.recycler_view)
-        // Navbar lathato
-        val navBar: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
-        navBar.visibility = View.VISIBLE
-
         setupRecyclerView()
         tasksViewModel.products.observe(viewLifecycleOwner) {
             Log.d(TAG, "Tasks list = $it")
@@ -66,10 +62,10 @@ class TasksListFragment : Fragment(R.layout.fragment_tasks_list), TasksListAdapt
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.addItemDecoration(
-                DividerItemDecoration(
-                        activity,
-                        DividerItemDecoration.VERTICAL
-                )
+            DividerItemDecoration(
+                activity,
+                DividerItemDecoration.VERTICAL
+            )
         )
         recyclerView.setHasFixedSize(true)
     }

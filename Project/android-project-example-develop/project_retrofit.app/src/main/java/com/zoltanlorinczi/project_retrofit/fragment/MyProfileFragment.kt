@@ -119,7 +119,8 @@ class MyProfileFragment : Fragment() {
                 mImage = mLoad(mWebPath)
                 myHandler.post {
                     mImageView.setImageBitmap(mImage)
-                    DownloadImageFromPath(mWebPath, mImageView)
+                    // meg atgondolni, atnezni a letoltest
+                    //downloadImageFromPath(mWebPath, mImageView)
                 }
             }
         }
@@ -153,7 +154,7 @@ class MyProfileFragment : Fragment() {
         return null
     }
 
-    fun DownloadImageFromPath(path: String?, imageView: ImageView) {
+    private fun downloadImageFromPath(path: String?, imageView: ImageView) {
 
         val thread = Thread {
             try {
