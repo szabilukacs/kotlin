@@ -1,6 +1,10 @@
 package com.zoltanlorinczi.project_retrofit.fragment
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +21,13 @@ import com.zoltanlorinczi.project_retrofit.App
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
 import com.zoltanlorinczi.project_retrofit.manager.SharedPreferencesManager
 import com.zoltanlorinczi.project_retrofit.viewmodel.*
+import java.io.BufferedInputStream
+import java.io.IOException
+import java.io.InputStream
+import java.net.HttpURLConnection
+import java.net.MalformedURLException
+import java.net.URL
+import java.util.concurrent.Executors
 
 class MyProfileFragment : Fragment() {
 
@@ -40,6 +51,7 @@ class MyProfileFragment : Fragment() {
         // Button a log outhoz meg
         // ott torolni a tokent, majd attenni a log inhez
         // profilkepet megcsinalni letoltse es mutassa
+        // Betenni kepkent egy sima usert, ha null az image
 
         val binding = FragmentMyProfileBinding.inflate(inflater, container, false)
 
@@ -66,7 +78,60 @@ class MyProfileFragment : Fragment() {
         binding.phoneNumber.text = phone_number
         binding.departmentId.text = department_id.toString()
 
+
+        // image
+        // Declaring and initializing the elements from the layout file
+        val mImageView = binding.profileImage
+        // Declaring a Bitmap local
+        var mImage: Bitmap?
+
+        // Declaring a webpath as a string
+        val mWebPath = image.toString()
+        // Declaring and initializing an Executor and a Handler
+        val myExecutor = Executors.newSingleThreadExecutor()
+        val myHandler = Handler(Looper.getMainLooper())
+
+        myExecutor.execute {
+            mImage = mLoad(mWebPath)
+            myHandler.post {
+                mImageView.setImageBitmap(mImage)
+            }
+        }
+
         return binding.root
     }
 
+    // Function to establish connection and load image
+    private fun mLoad(string: String): Bitmap? {
+        val url: URL = mStringToURL(string)!!
+        val connection: HttpURLConnection?
+        try {
+            connection = url.openConnection() as HttpURLConnection
+            connection.connect()
+            val inputStream: InputStream = connection.inputStream
+            val bufferedInputStream = BufferedInputStream(inputStream)
+            return BitmapFactory.decodeStream(bufferedInputStream)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return null
+    }
+
+    // Function to convert string to URL
+    private fun mStringToURL(string: String): URL? {
+        try {
+            return URL(string)
+        } catch (e: MalformedURLException) {
+            e.printStackTrace()
+        }
+        return null
+    }
+
 }
+
+
+
+
+
+
+

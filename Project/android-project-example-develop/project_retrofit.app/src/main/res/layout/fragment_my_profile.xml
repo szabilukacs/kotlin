@@ -7,6 +7,18 @@
     android:background="@drawable/pattern_background"
     tools:context="com.zoltanlorinczi.project_retrofit.MainActivity">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="184dp"
+        android:layout_height="173dp"
+        android:layout_marginTop="180dp"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:layout_width="181dp"
         android:layout_height="48dp"
