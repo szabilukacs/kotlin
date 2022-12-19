@@ -59,6 +59,7 @@ class TasksListFragment : Fragment(R.layout.fragment_tasks_list),
 
     private fun setupRecyclerView() {
         adapter = TasksListAdapter(ArrayList(), requireContext(), this, this)
+        Log.d(TAG,adapter.toString())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.addItemDecoration(

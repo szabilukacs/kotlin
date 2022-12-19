@@ -35,6 +35,8 @@ class TasksListAdapter(
     open inner class SimpleDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener, View.OnLongClickListener {
 
+        val taskTitleTextView: TextView = itemView.findViewById(R.id.task_title_view)
+
         override fun onClick(v: View?) {
             TODO("Not yet implemented")
         }
@@ -47,7 +49,7 @@ class TasksListAdapter(
     // 1. user defined ViewHolder type - Embedded class!
     inner class DataViewHolder(itemView: View) : SimpleDataViewHolder(itemView),
         View.OnClickListener, View.OnLongClickListener {
-        val taskTitleTextView: TextView = itemView.findViewById(R.id.task_title_view)
+        //val taskTitleTextView: TextView = itemView.findViewById(R.id.task_title_view)
         val taskDescriptionTextView: TextView = itemView.findViewById(R.id.task_description_view)
         val taskPriorityTextView: TextView = itemView.findViewById(R.id.task_priority_view)
         val taskOwnerProfileImage: ImageView =
@@ -103,6 +105,7 @@ class TasksListAdapter(
 
     // 3. Called many times, when we scroll the list
     override fun onBindViewHolder(holder: SimpleDataViewHolder, position: Int) {
+
         if (getItemViewType(position) == TaskListItemType.COMPLEX.value) {
             val complexHolder = (holder as DataViewHolder)
             val currentItem = list[position]
@@ -128,6 +131,9 @@ class TasksListAdapter(
                 //.placeholder(R.drawable.ic_launcher_background)
                 .override(100, 100)
                 .into(complexHolder.taskOwnerProfileImage)
+        } else {
+            val currentItem = list[position]
+            holder.taskTitleTextView.text = currentItem.title
         }
     }
 
