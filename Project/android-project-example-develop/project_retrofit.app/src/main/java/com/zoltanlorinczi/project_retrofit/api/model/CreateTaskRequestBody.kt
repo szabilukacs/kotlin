@@ -9,10 +9,10 @@ data class CreateTaskRequestBody(
     @SerializedName("description")
     var description: String,
 
-    @SerializedName("created_time")
-    var createdTime: Long,
+//    @SerializedName("created_time")
+//    var createdTime: Long,
 
-    @SerializedName("asigned_to_user_ID")
+    @SerializedName("assignedToUserId")
     var assignedToUserID: Int,
 
     @SerializedName("priority")
@@ -21,11 +21,12 @@ data class CreateTaskRequestBody(
     @SerializedName("deadline")
     var deadline: Long,
 
-    @SerializedName("department_ID")
-    var departmentID: Int,
+    @SerializedName("departmentId")
+    var departmentId: Int,
 
     @SerializedName("status")
-    var status: String,
+    // A BE csak szamokat ment el
+    var status: Int,
 
     @SerializedName("progress")
     var progress: Int,

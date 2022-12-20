@@ -20,7 +20,6 @@ class CreateTaskViewModel(private val repository: ThreeTrackerRepository) : View
         private val TAG: String = javaClass.simpleName
     }
 
-    var token: MutableLiveData<String> = MutableLiveData()
     var isSuccessful: MutableLiveData<Boolean> = MutableLiveData()
 
     fun createTask(
@@ -30,14 +29,14 @@ class CreateTaskViewModel(private val repository: ThreeTrackerRepository) : View
         priority: Int,
         deadline: Long,
         departmentId: Int,
-        status: String,
+        status: Int,
         progress: Int,
     ) {
         val requestBody = CreateTaskRequestBody(
             title,
             description,
             // kesobb betenni mai datumra, nem longra
-            createdTime = 1234567,
+            //createdTime = 1234567,
             assignedToUserId,
             priority,
             deadline,
@@ -52,15 +51,23 @@ class CreateTaskViewModel(private val repository: ThreeTrackerRepository) : View
 
     private suspend fun executeCreateTask(requestBody: CreateTaskRequestBody) {
         try {
-            val response = withContext(Dispatchers.IO) {
-                repository.createTask(requestBody)
-            }
+            val token: String? = App.sharedPreferences.getStringValue(
+                SharedPreferencesManager.KEY_TOKEN,
+                "Empty token!"
+            )
+            if (token!=null)
+            {
+                val response = withContext(Dispatchers.IO) {
+                    repository.createTask(token,requestBody)
+                }
 
-            if (response.isSuccessful) {
-                Log.d(TAG, "Create task response: ${response.body()}")
-            } else {
-                Log.d(TAG, "Create task error response: ${response.message()}")
-                isSuccessful.value = false
+                if (response.isSuccessful) {
+                    Log.d(TAG, "Create task response: ${response.body()}")
+                    isSuccessful.value = true
+                } else {
+                    Log.d(TAG, "Create task error response: ${response.message()}")
+                    isSuccessful.value = false
+                }
             }
         } catch (e: Exception) {
             Log.d(TAG, "Create task failed with exception: ${e.message}")

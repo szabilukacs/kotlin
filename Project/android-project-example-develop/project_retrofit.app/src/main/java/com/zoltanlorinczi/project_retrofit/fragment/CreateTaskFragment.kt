@@ -6,20 +6,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.zoltanlorinczi.project_retorfit.R
 import com.zoltanlorinczi.project_retorfit.databinding.FragmentCreateTaskBinding
+import com.zoltanlorinczi.project_retrofit.App
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
+import com.zoltanlorinczi.project_retrofit.manager.SharedPreferencesManager
 import com.zoltanlorinczi.project_retrofit.viewmodel.CreateTaskViewModel
 import com.zoltanlorinczi.project_retrofit.viewmodel.CreateTaskViewModelFactory
 import java.lang.Error
+import java.lang.Exception
+import java.lang.NumberFormatException
 
 class CreateTaskFragment : Fragment() {
 
     private val TAG: String = javaClass.simpleName
 
     private lateinit var createTaskViewModel: CreateTaskViewModel
-    lateinit var binding: FragmentCreateTaskBinding
+//    lateinit var binding: FragmentCreateTaskBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,45 +38,109 @@ class CreateTaskFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        Log.d(TAG,"Oncreateviev eleje")
+        Log.d(TAG, "Oncreateviev eleje")
 
-        binding = FragmentCreateTaskBinding.inflate(inflater, container, false)
-        // itt lesz egy edit page
-        // szovegmezok ahol meglehet adni title stb.
-        // ide majd betenni a create task viewot a taskdetailbol
-        val button = binding.buttonCreateTask
+        val view = inflater.inflate(R.layout.fragment_create_task, container, false)
 
-        val title = binding.edittextTitle.text.toString()
-        val description = binding.editTextDescription.text.toString()
-        val assignedTo = binding.edittextAssignTo.text.toString()
-        val priority = binding.edittextPriority.text.toString()
-        val deadline = binding.edittextDueDateLong.toString()
-        val departmentId = binding.edittextDepartmentId.text.toString()
-
-
-        val status = binding.RadioGroup.checkedRadioButtonId.toString()
-        val progress = binding.seekBarProgress.progress
-        Log.d(TAG, status)
-
-        Log.d(TAG,"Oncreateviev vege")
+        val button: Button = view.findViewById(R.id.button_create_task)
+        val titleEdit: EditText = view.findViewById(R.id.edittext_title)
+        val descriptionEdit: EditText = view.findViewById(R.id.editText_description)
+        val assignedToEdit: EditText = view.findViewById(R.id.edittext_assign_to)
+        val priorityEdit: EditText = view.findViewById(R.id.edittext_priority)
+        val deadlineEdit: EditText = view.findViewById(R.id.edittext_due_date_long)
+        val departmentIdEdit: EditText = view.findViewById(R.id.edittext_department_id)
+        val statusEdit: RadioGroup = view.findViewById(R.id.RadioGroup)
+        val progressEdit: SeekBar = view.findViewById(R.id.seekBar_progress)
 
         button.setOnClickListener {
-            Log.d(TAG,"Clicked to create")
-            createTaskViewModel.createTask(
-                title,
-                description,
-                assignedTo.toInt(),
-                priority.toInt(),
-                deadline.toLong(),
-                departmentId.toInt(),
-                status,
-                progress
-            )
-            Log.d(TAG,"Tuljutott ezen")
-        }
+            Log.d(TAG, "Clicked to create")
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_task, container, false)
+            val title = titleEdit.text.toString()
+            val description = descriptionEdit.text.toString()
+            val assignedTo = assignedToEdit.text.toString()
+            val priority = priorityEdit.text.toString()
+            val deadline = deadlineEdit.text.toString()
+            val departmentId = departmentIdEdit.text.toString()
+            val status: Int = when (statusEdit.checkedRadioButtonId) {
+                R.id.radioButton_new -> {
+                    0
+                }
+                R.id.radioButton_in_progress -> {
+                    1
+                }
+                R.id.radioButton_done -> {
+                    2
+                }
+                R.id.radioButton_blocked -> {
+                    3
+                }
+                else -> {
+                    -1
+                }
+            }
+            val progress = progressEdit.progress
+
+            // Ellenorzes
+            try {
+                Integer.parseInt(assignedTo)
+                Integer.parseInt(priority)
+                Integer.parseInt(deadline)
+                Integer.parseInt(departmentId)
+
+                if ((title == "") || (description == "") || (status == -1) || (deadline == "") || (assignedTo == "")) {
+                    Toast.makeText(activity, "Fill all mandatory fileds!", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    // Egyenlore 7 department van
+                    if ((departmentId.toInt() > 7) || (departmentId.toInt() < 0))
+                        Toast.makeText(activity, "Incorrect departmentId", Toast.LENGTH_SHORT)
+                            .show()
+                    else {
+                        createTaskViewModel.createTask(
+                            title,
+                            description,
+                            assignedTo.toInt(),
+                            priority.toInt(),
+                            deadline.toLong(),
+                            departmentId.toInt(),
+                            status,
+                            progress
+                        )
+                        createTaskViewModel.isSuccessful.observe(this.viewLifecycleOwner) {
+                            Log.d(TAG, "isSuccesful response = $it")
+                            if (it == true) {
+                                Toast.makeText(
+                                    activity,
+                                    "Task added successfully",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                                // load fragment
+                                val transaction = parentFragmentManager.beginTransaction()
+                                transaction.replace(R.id.nav_host_fragment, TasksListFragment())
+                                transaction.addToBackStack(null)
+                                transaction.commit()
+
+                            } else
+                            // department id miatt egyenlore, majd azt is lecheckolni
+                                Toast.makeText(
+                                    activity,
+                                    "Task cannot be created!",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                        }
+                    }
+                }
+            } catch (nfe: NumberFormatException) {
+                Toast.makeText(activity, "Only numbers allowed!", Toast.LENGTH_SHORT).show()
+                Log.d(TAG, "Valami nem jol lett beirva!")
+            }
+
+        }
+        Log.d(TAG, "Oncreateviev vege")
+
+        return view
     }
 
 }

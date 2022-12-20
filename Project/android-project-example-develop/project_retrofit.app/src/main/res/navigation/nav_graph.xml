@@ -83,5 +83,9 @@
       android:id="@+id/createTaskFragment"
       android:name="com.zoltanlorinczi.project_retrofit.fragment.CreateTaskFragment"
       android:label="fragment_create_task"
-      tools:layout="@layout/fragment_create_task" />
+      tools:layout="@layout/fragment_create_task" >
+    <action
+        android:id="@+id/action_createTaskFragment_to_taskDetailFragment"
+        app:destination="@id/taskDetailFragment" />
+  </fragment>
 </navigation>
