@@ -17,6 +17,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.zoltanlorinczi.project_retorfit.R
 import com.zoltanlorinczi.project_retorfit.databinding.FragmentMainScreenBinding
 import com.zoltanlorinczi.project_retorfit.databinding.FragmentMyProfileBinding
@@ -97,93 +98,10 @@ class MyProfileFragment : Fragment() {
 
         }
 
-        // image
-
-        // Declaring and initializing the elements from the layout file
-        val mImageView = binding.profileImage
-        // Declaring a Bitmap local
-        var mImage: Bitmap?
-
-        // Declaring a webpath as a string
-        val mWebPath = image
-        // Declaring and initializing an Executor and a Handler
-        val myExecutor = Executors.newSingleThreadExecutor()
-        val myHandler = Handler(Looper.getMainLooper())
-
-        myExecutor.execute {
-            if ((mWebPath == null) || (mWebPath == "null")) {
-                // ha null akkor sima basic profilkepet tolt be
-                mImage =
-                    mLoad("https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805__340.png")
-            } else {
-                mImage = mLoad(mWebPath)
-                myHandler.post {
-                    mImageView.setImageBitmap(mImage)
-                    // meg atgondolni, atnezni a letoltest
-                    //downloadImageFromPath(mWebPath, mImageView)
-                }
-            }
-        }
+        // image with Glide
+        context?.let { Glide.with(it).load(image).into(binding.profileImage) }
 
         return binding.root
-    }
-
-    // Function to establish connection and load image
-    private fun mLoad(string: String): Bitmap? {
-        val url: URL = mStringToURL(string)!!
-        val connection: HttpURLConnection?
-        try {
-            connection = url.openConnection() as HttpURLConnection
-            connection.connect()
-            val inputStream: InputStream = connection.inputStream
-            val bufferedInputStream = BufferedInputStream(inputStream)
-            return BitmapFactory.decodeStream(bufferedInputStream)
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        return null
-    }
-
-    // Function to convert string to URL
-    private fun mStringToURL(string: String): URL? {
-        try {
-            return URL(string)
-        } catch (e: MalformedURLException) {
-            e.printStackTrace()
-        }
-        return null
-    }
-
-    private fun downloadImageFromPath(path: String?, imageView: ImageView) {
-
-        val thread = Thread {
-            try {
-
-                val mInStream: InputStream?
-                val bmp: Bitmap?
-
-                var responseCode = -1
-                try {
-                    val url = URL(path)
-                    val con = url.openConnection() as HttpURLConnection
-                    con.doInput = true
-                    con.connect()
-                    responseCode = con.responseCode
-                    if (responseCode == HttpURLConnection.HTTP_OK) {
-                        //download
-                        mInStream = con.inputStream
-                        bmp = BitmapFactory.decodeStream(mInStream)
-                        mInStream.close()
-                        imageView.setImageBitmap(bmp)
-                    }
-                } catch (ex: Exception) {
-                    Log.e("Exception", ex.toString())
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-        thread.start()
     }
 
 }

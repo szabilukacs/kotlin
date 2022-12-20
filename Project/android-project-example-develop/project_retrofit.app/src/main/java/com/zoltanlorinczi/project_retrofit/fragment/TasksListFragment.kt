@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -77,7 +78,8 @@ class TasksListFragment : Fragment(R.layout.fragment_tasks_list),
     }
 
     override fun onItemClick(position: Int) {
-//        TODO("Not yet implemented")
+        Log.d(TAG,"Clicked on item")
+
     }
 
     override fun onItemLongClick(position: Int) {

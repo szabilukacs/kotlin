@@ -24,6 +24,9 @@
     android:name="com.zoltanlorinczi.project_retrofit.fragment.TasksListFragment"
     android:label="ListFragment"
     tools:layout="@layout/fragment_tasks_list">
+    <action
+        android:id="@+id/action_listFragment_to_taskDetailFragment"
+        app:destination="@id/taskDetailFragment" />
   </fragment>
   <fragment
       android:id="@+id/forgetPasswordFragment"
@@ -67,4 +70,9 @@
         android:id="@+id/action_mainScreenFragment_to_listFragment"
         app:destination="@id/listFragment" />
   </fragment>
+  <fragment
+      android:id="@+id/taskDetailFragment"
+      android:name="com.zoltanlorinczi.project_retrofit.fragment.TaskDetailFragment"
+      android:label="TaskDetailFragment"
+      tools:layout="@layout/fragment_task_detail"/>
 </navigation>
