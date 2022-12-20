@@ -8,145 +8,239 @@
     <TextView
         style="@style/Theme.Material3.DynamicColors.Dark"
         android:layout_width="94dp"
-        android:layout_height="29dp"
+        android:layout_height="26dp"
         android:text="Progress:"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.709"
+        app:layout_constraintHorizontal_bias="0.703"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.528" />
+        app:layout_constraintVertical_bias="0.424" />
 
     <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
         android:id="@+id/task_detail_progress"
+        style="@style/Theme.Material3.DynamicColors.Dark"
         android:layout_width="40dp"
         android:layout_height="37dp"
         android:text="progress"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintHorizontal_bias="0.908"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.532" />
+        app:layout_constraintVertical_bias="0.427" />
+
+    <TextView
+        android:id="@+id/task_detail_deadline"
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="128dp"
+        android:layout_height="26dp"
+        android:text="deadline"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.672" />
 
     <TextView
         style="@style/Theme.Material3.DynamicColors.Dark"
-        android:layout_width="109dp"
-        android:layout_height="32dp"
-        android:text="Created By User: "
-        android:textSize="14sp"
-        android:textStyle="bold"
+        android:layout_width="94dp"
+        android:layout_height="26dp"
+        android:text="Deadline: "
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.661" />
+        app:layout_constraintVertical_bias="0.673" />
+
+    <TextView
+        android:id="@+id/task_detail_createdAt"
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="128dp"
+        android:layout_height="26dp"
+        android:text="Time"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.492" />
 
     <TextView
         style="@style/Theme.Material3.DynamicColors.Dark"
-        android:layout_width="126dp"
-        android:layout_height="32dp"
+        android:layout_width="129dp"
+        android:layout_height="26dp"
         android:text="Assigned to User: "
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintHorizontal_bias="0.138"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725" />
+        app:layout_constraintVertical_bias="0.616" />
 
     <TextView
+        android:id="@+id/task_detail_status"
         style="@style/Theme.Material3.DynamicColors.Dark"
-        android:layout_width="94dp"
-        android:layout_height="29dp"
-        android:text="Deadline: "
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.791" />
-
-    <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
-        android:id="@+id/task_detail_departmentId"
-        android:layout_width="68dp"
-        android:layout_height="29dp"
-        android:text="department id"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.846" />
-
-    <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
-        android:id="@+id/task_detail_deadline"
         android:layout_width="128dp"
-        android:layout_height="28dp"
-        android:text="deadline"
+        android:layout_height="26dp"
+        android:text="status"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79" />
-
-    <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
-        android:id="@+id/task_detail_assignedTo"
-        android:layout_width="128dp"
-        android:layout_height="28dp"
-        android:text="userid assigned"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.649"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.724" />
+        app:layout_constraintVertical_bias="0.355" />
 
     <TextView
         style="@style/Theme.Material3.DynamicColors.Dark"
         android:layout_width="112dp"
-        android:layout_height="30dp"
+        android:layout_height="26dp"
         android:text="Department id: "
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.846" />
+        app:layout_constraintVertical_bias="0.744" />
 
-    <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
-        android:id="@+id/task_detail_createdBy"
-        android:layout_width="89dp"
-        android:layout_height="33dp"
-        android:text="userId"
-        android:textSize="14sp"
-        android:textStyle="bold"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton_add_new_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.887"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.663" />
+        app:layout_constraintVertical_bias="0.751"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/task_detail_createdBy"
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="89dp"
+        android:layout_height="26dp"
+        android:text="userId"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.557" />
 
     <TextView
         style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="93dp"
+        android:layout_height="26dp"
+        android:text="Task prioririty:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.423" />
+
+    <TextView
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="94dp"
+        android:layout_height="26dp"
+        android:text="Created at: "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.491" />
+
+    <TextView
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="94dp"
+        android:layout_height="26dp"
+        android:text="Status:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.354" />
+
+    <TextView
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="111dp"
+        android:layout_height="26dp"
+        android:text="Created By User: "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.556" />
+
+    <TextView
+        android:id="@+id/task_detail_departmentId"
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="90dp"
+        android:layout_height="26dp"
+        android:text="department id"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.746" />
+
+    <TextView
+        android:id="@+id/task_detail_priority"
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="55dp"
+        android:layout_height="38dp"
+        android:text="Task prioririty"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.415"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43" />
+
+
+    <TextView
+        android:id="@+id/task_detail_assignedTo"
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="128dp"
+        android:layout_height="26dp"
+        android:text="userid assigned"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.632"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.617" />
+
+    <TextView
         android:id="@+id/task_detail_description"
+        style="@style/Theme.Material3.DynamicColors.Dark"
         android:layout_width="332dp"
-        android:layout_height="138dp"
+        android:layout_height="103dp"
         android:text="Description"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -155,8 +249,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231" />
-
+        app:layout_constraintVertical_bias="0.181" />
 
     <TextView
         style="@style/Theme.Material3.DynamicColors.Dark"
@@ -171,102 +264,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.071" />
-
-    <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
-        android:id="@+id/task_detail_status"
-        android:layout_width="128dp"
-        android:layout_height="28dp"
-        android:text="status"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.558"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
-
-    <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
-        android:layout_width="94dp"
-        android:layout_height="29dp"
-        android:text="Status:"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
-
-    <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
-        android:layout_width="93dp"
-        android:layout_height="28dp"
-        android:text="Task prioririty:"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.527" />
-
-    <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
-        android:layout_width="94dp"
-        android:layout_height="29dp"
-        android:text="Created at: "
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.603" />
-
-    <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
-        android:id="@+id/task_detail_createdAt"
-        android:layout_width="128dp"
-        android:layout_height="28dp"
-        android:text="Time"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.558"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604" />
-
-    <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
-        android:id="@+id/task_detail_priority"
-        android:layout_width="55dp"
-        android:layout_height="38dp"
-        android:text="Task prioririty"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.434"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton_add_new_task"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@android:drawable/ic_input_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.856" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
