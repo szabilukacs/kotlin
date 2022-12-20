@@ -65,4 +65,7 @@ dependencies {
 
     // Circular imageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Animation
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
 }
