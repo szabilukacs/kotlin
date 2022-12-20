@@ -6,50 +6,39 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zoltanlorinczi.project_retrofit.App
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
+import com.zoltanlorinczi.project_retrofit.api.model.ForgetPasswordRequestBody
 import com.zoltanlorinczi.project_retrofit.api.model.LoginRequestBody
 import com.zoltanlorinczi.project_retrofit.manager.SharedPreferencesManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-/**
- * Author:  Zoltan Lorinczi
- * Date:    11/8/2021
- */
-class LoginViewModel(private val repository: ThreeTrackerRepository) : ViewModel() {
-
+class ForgetPassViewModel(private val repository: ThreeTrackerRepository) : ViewModel() {
     companion object {
         private val TAG: String = javaClass.simpleName
     }
 
-    var token: MutableLiveData<String> = MutableLiveData()
     var isSuccessful: MutableLiveData<Boolean> = MutableLiveData()
+    var inserted: Int? = 0
 
-    fun login(username: String, password: String) {
-        val requestBody = LoginRequestBody(username, password)
+    fun resetPassword(email: String) {
+        val requestBody = ForgetPasswordRequestBody(email)
         viewModelScope.launch {
-            executeLogin(requestBody)
+            executeResetPassword(requestBody)
         }
     }
 
-    private suspend fun executeLogin(requestBody: LoginRequestBody) {
+    private suspend fun executeResetPassword(requestBody: ForgetPasswordRequestBody) {
         try {
             val response = withContext(Dispatchers.IO) {
-                repository.login(requestBody)
+                repository.forgetPassword(requestBody)
             }
-
             if (response.isSuccessful) {
-                Log.d(TAG, "Login response: ${response.body()}")
+                Log.d(TAG, "Reset password response: ${response.body()}")
+                inserted = response.body()?.inserted
 
-                val responseToken = response.body()?.token
-                responseToken?.let {
-                    token.value = it
-                    App.sharedPreferences.putStringValue(SharedPreferencesManager.KEY_TOKEN, it)
-
-                    isSuccessful.value = true
-                }
             } else {
-                Log.d(TAG, "Login error response: ${response.message()}")
+                Log.d(TAG, "Reset password error response: ${response.message()}")
                 isSuccessful.value = false
             }
         } catch (e: Exception) {
@@ -57,4 +46,5 @@ class LoginViewModel(private val repository: ThreeTrackerRepository) : ViewModel
             isSuccessful.value = false
         }
     }
+
 }

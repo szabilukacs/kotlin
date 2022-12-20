@@ -67,21 +67,4 @@ class SplashActivity : AppCompatActivity() {
         }, 3000)
     }
 
-
-//    fun checkToken():Boolean{
-//
-//        val token = App.sharedPreferences.getStringValue(
-//            SharedPreferencesManager.KEY_TOKEN,
-//            "Empty token!"
-//        )
-//        if (token == "Empty token!")
-//            return false
-//        Log.d(TAG, "Itt vagyunk")
-//       // Log.d(TAG, getMyUserViewModel.token.toString())
-//
-//        // get my user
-//
-//        return true
-//    }
-
 }

@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.questionAddFragment -> loadFragment(QuestionAddFragment())
                 else ->false
             }
-
         }
         //println(R.id.menu1)
         //println(item.itemId)
