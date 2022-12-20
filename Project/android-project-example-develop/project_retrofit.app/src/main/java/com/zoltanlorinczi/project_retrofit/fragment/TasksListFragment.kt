@@ -62,7 +62,7 @@ class TasksListFragment : Fragment(R.layout.fragment_tasks_list),
 
     private fun setupRecyclerView() {
         adapter = TasksListAdapter(ArrayList(), requireContext(), this, this)
-        Log.d(TAG,adapter.toString())
+        Log.d(TAG, adapter.toString())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.addItemDecoration(
@@ -78,8 +78,34 @@ class TasksListFragment : Fragment(R.layout.fragment_tasks_list),
     }
 
     override fun onItemClick(position: Int) {
-        Log.d(TAG,"Clicked on item")
+        Log.d(TAG, "Clicked on item, Pozition: ")
+        Log.d(TAG, position.toString())
 
+        val b = Bundle()
+        b.putInt("position", position)
+        val taskDetail = tasksViewModel.products.value?.get(position)
+        if (taskDetail!= null)
+        {
+            b.putInt("id",taskDetail.id)
+            b.putString("title",taskDetail.title)
+            b.putString("description",taskDetail.description)
+            b.putLong("createdTime",taskDetail.createdTime)
+            b.putInt("createdByUserID",taskDetail.createdByUserID)
+            b.putInt("assignedToUserID",taskDetail.assignedToUserID)
+            b.putInt("priority",taskDetail.priority)
+            b.putLong("deadline",taskDetail.deadline)
+            b.putInt("departmentId",taskDetail.departmentID)
+            b.putInt("status",taskDetail.status)
+            b.putString("progress",taskDetail.progress)
+        }
+
+
+        val fragi = TaskDetailFragment()
+        fragi.arguments = b
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.nav_host_fragment, fragi)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     override fun onItemLongClick(position: Int) {
