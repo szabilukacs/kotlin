@@ -95,15 +95,14 @@ class TasksListFragment : Fragment(R.layout.fragment_tasks_list),
             b.putInt("priority",taskDetail.priority)
             b.putLong("deadline",taskDetail.deadline)
             b.putInt("departmentId",taskDetail.departmentID)
-            b.putInt("status",taskDetail.status)
+            b.putString("status", taskDetail.status.toString())
             b.putString("progress",taskDetail.progress)
         }
 
-
-        val fragi = TaskDetailFragment()
-        fragi.arguments = b
+        val taskDetailFragment = TaskDetailFragment()
+        taskDetailFragment.arguments = b
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.nav_host_fragment, fragi)
+        transaction.replace(R.id.nav_host_fragment, taskDetailFragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }

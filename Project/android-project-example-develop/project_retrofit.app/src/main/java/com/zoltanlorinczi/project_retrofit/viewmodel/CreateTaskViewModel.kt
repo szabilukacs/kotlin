@@ -30,7 +30,8 @@ class CreateTaskViewModel(private val repository: ThreeTrackerRepository) : View
         priority: Int,
         deadline: Long,
         departmentId: Int,
-        status: Int
+        status: String,
+        progress: Int,
     ) {
         val requestBody = CreateTaskRequestBody(
             title,
@@ -41,9 +42,9 @@ class CreateTaskViewModel(private val repository: ThreeTrackerRepository) : View
             priority,
             deadline,
             departmentId,
-            status
+            status,
+            progress
         )
-
         viewModelScope.launch {
             executeCreateTask(requestBody)
         }
@@ -58,11 +59,11 @@ class CreateTaskViewModel(private val repository: ThreeTrackerRepository) : View
             if (response.isSuccessful) {
                 Log.d(TAG, "Create task response: ${response.body()}")
             } else {
-                Log.d(TAG, "Login error response: ${response.message()}")
+                Log.d(TAG, "Create task error response: ${response.message()}")
                 isSuccessful.value = false
             }
         } catch (e: Exception) {
-            Log.d(TAG, "LoginViewModel - login() failed with exception: ${e.message}")
+            Log.d(TAG, "Create task failed with exception: ${e.message}")
             isSuccessful.value = false
         }
     }

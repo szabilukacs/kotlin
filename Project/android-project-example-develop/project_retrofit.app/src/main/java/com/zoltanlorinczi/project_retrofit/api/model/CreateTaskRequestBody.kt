@@ -25,5 +25,8 @@ data class CreateTaskRequestBody(
     var departmentID: Int,
 
     @SerializedName("status")
-    var status: Int,
+    var status: String,
+
+    @SerializedName("progress")
+    var progress: Int,
 )
