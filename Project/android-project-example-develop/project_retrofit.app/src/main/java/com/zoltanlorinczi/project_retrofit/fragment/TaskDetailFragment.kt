@@ -10,21 +10,23 @@ import androidx.lifecycle.ViewModelProvider
 import com.zoltanlorinczi.project_retorfit.databinding.FragmentTaskDetailBinding
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
 import com.zoltanlorinczi.project_retrofit.api.model.TaskResponse
+import com.zoltanlorinczi.project_retrofit.viewmodel.CreateTaskViewModel
+import com.zoltanlorinczi.project_retrofit.viewmodel.CreateTaskViewModelFactory
 import com.zoltanlorinczi.project_retrofit.viewmodel.TasksViewModel
 import com.zoltanlorinczi.project_retrofit.viewmodel.TasksViewModelFactory
 import kotlin.math.log
 
 class TaskDetailFragment : Fragment() {
 
-   // private lateinit var tasksViewModel: TasksViewModel
+    private lateinit var createTaskViewModel: CreateTaskViewModel
     lateinit var binding: FragmentTaskDetailBinding
 
     private val TAG: String = javaClass.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = TasksViewModelFactory(ThreeTrackerRepository())
-        //tasksViewModel = ViewModelProvider(this, factory)[TasksViewModel::class.java]
+        val factory = CreateTaskViewModelFactory(ThreeTrackerRepository())
+        createTaskViewModel = ViewModelProvider(this, factory)[CreateTaskViewModel::class.java]
 
     }
 
@@ -35,6 +37,8 @@ class TaskDetailFragment : Fragment() {
     ): View? {
         binding = FragmentTaskDetailBinding.inflate(inflater, container, false)
         val b = this.arguments
+
+        val button = binding.floatingActionButtonAddNewTask
 
         if (b != null) {
             //val taskDetail = TaskResponse()
@@ -61,7 +65,13 @@ class TaskDetailFragment : Fragment() {
             binding.taskDetailStatus.text = status.toString()
             binding.taskDetailProgress.text = progress
             binding.taskDetailDeadline.text = deadline.toString()
+
+            button.setOnClickListener {
+                // load create new task fragment
+                // ide csak egy gomb ami atvisz a createTask fragmentre
+            }
         }
+
 
 
 

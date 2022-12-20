@@ -26,4 +26,7 @@ interface UserApiService {
 
     @POST(BackendConstants.FORGOT_PASSWORD)
     suspend fun forgetPassword(@Body forgetPass: ForgetPasswordRequestBody): Response<ForgetPasswordResponse>
+
+    @POST(BackendConstants.CREATE_TASK)
+    suspend fun createTask(@Body createTaskRequestBody: CreateTaskRequestBody): Response<String>
 }
