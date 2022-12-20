@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -61,7 +62,7 @@ class TasksListFragment : Fragment(R.layout.fragment_tasks_list),
 
     private fun setupRecyclerView() {
         adapter = TasksListAdapter(ArrayList(), requireContext(), this, this)
-        Log.d(TAG,adapter.toString())
+        Log.d(TAG, adapter.toString())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.addItemDecoration(
@@ -77,7 +78,33 @@ class TasksListFragment : Fragment(R.layout.fragment_tasks_list),
     }
 
     override fun onItemClick(position: Int) {
-//        TODO("Not yet implemented")
+        Log.d(TAG, "Clicked on item, Pozition: ")
+        Log.d(TAG, position.toString())
+
+        val b = Bundle()
+        b.putInt("position", position)
+        val taskDetail = tasksViewModel.products.value?.get(position)
+        if (taskDetail!= null)
+        {
+            b.putInt("id",taskDetail.id)
+            b.putString("title",taskDetail.title)
+            b.putString("description",taskDetail.description)
+            b.putLong("createdTime",taskDetail.createdTime)
+            b.putInt("createdByUserID",taskDetail.createdByUserID)
+            b.putInt("assignedToUserID",taskDetail.assignedToUserID)
+            b.putInt("priority",taskDetail.priority)
+            b.putLong("deadline",taskDetail.deadline)
+            b.putInt("departmentId",taskDetail.departmentID)
+            b.putString("status", taskDetail.status.toString())
+            b.putString("progress",taskDetail.progress)
+        }
+
+        val taskDetailFragment = TaskDetailFragment()
+        taskDetailFragment.arguments = b
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.nav_host_fragment, taskDetailFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     override fun onItemLongClick(position: Int) {
