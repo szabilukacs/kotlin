@@ -29,4 +29,8 @@ class ThreeTrackerRepository {
         return RetrofitInstance.USER_API_SERVICE.createTask(token,createTaskRequestBody)
     }
 
+    suspend fun getDepartments(token: String): Response<List<GetDepartmentsResponse>> {
+        return RetrofitInstance.USER_API_SERVICE.getDepartments(token)
+    }
+
 }

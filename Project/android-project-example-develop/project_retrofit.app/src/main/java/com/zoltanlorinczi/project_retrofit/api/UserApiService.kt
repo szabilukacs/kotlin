@@ -32,4 +32,7 @@ interface UserApiService {
         @Header(BackendConstants.HEADER_TOKEN) token: String,
         @Body createTaskRequestBody: CreateTaskRequestBody
     ): Response<CreateTaskResponse>
+
+    @GET(BackendConstants.GET_DEPARTMENTS)
+    suspend fun getDepartments(@Header(BackendConstants.HEADER_TOKEN) token: String): Response<List<GetDepartmentsResponse>>
 }

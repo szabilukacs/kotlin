@@ -15,8 +15,6 @@ class ActivitiesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("ActivitiesFragment","Letrejott")
-        // ellenorizni a tokent
-        // lekerni az activitiket, ha rossz response akkor error oldalt betolteni
 
     }
 
