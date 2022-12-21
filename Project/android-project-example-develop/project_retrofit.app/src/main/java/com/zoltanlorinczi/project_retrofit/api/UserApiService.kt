@@ -32,4 +32,21 @@ interface UserApiService {
         @Header(BackendConstants.HEADER_TOKEN) token: String,
         @Body createTaskRequestBody: CreateTaskRequestBody
     ): Response<CreateTaskResponse>
+
+    @GET(BackendConstants.GET_DEPARTMENTS)
+    suspend fun getDepartments(@Header(BackendConstants.HEADER_TOKEN) token: String): Response<List<GetDepartmentsResponse>>
+
+    @GET(BackendConstants.GET_ACTIVITIES)
+    suspend fun getActivities(
+        @Header(BackendConstants.HEADER_TOKEN) token: String
+       // @Body getActivitiesRequestBody: GetActivitiesRequestBody
+    // erre error - cannot contain body elements non body type
+    ): Response<List<GetActivitiesResponse>>
+
+    @POST(BackendConstants.UPDATE_PROFILE_URL)
+    suspend fun updateProfile(
+        @Header(BackendConstants.HEADER_TOKEN) token: String,
+        @Body updateProfileRequestBody: updateProfileRequestBody
+    ): Response<updateProfileResponse>
+
 }

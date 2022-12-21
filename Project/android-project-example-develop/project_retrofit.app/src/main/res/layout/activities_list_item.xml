@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+    <TextView
+        android:id="@+id/sub_id_textview"
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="127dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="24dp"
+        android:text="sub_id"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sub_type_textview"
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="127dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="60dp"
+        android:text="sub_type"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="127dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="60dp"
+        android:text="Subtype:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="127dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="92dp"
+        android:text="Type:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/type_textview"
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="127dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="92dp"
+        android:text="type"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        style="@style/Theme.Material3.DynamicColors.Dark"
+        android:layout_width="127dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="24dp"
+        android:text="Sub ID:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

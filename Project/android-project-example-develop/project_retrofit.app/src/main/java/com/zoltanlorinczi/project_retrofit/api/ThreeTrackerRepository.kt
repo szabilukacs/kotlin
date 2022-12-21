@@ -25,8 +25,26 @@ class ThreeTrackerRepository {
         return RetrofitInstance.USER_API_SERVICE.forgetPassword(forgetPassBody)
     }
 
-    suspend fun createTask(token: String,createTaskRequestBody: CreateTaskRequestBody): Response<CreateTaskResponse> {
-        return RetrofitInstance.USER_API_SERVICE.createTask(token,createTaskRequestBody)
+    suspend fun createTask(
+        token: String,
+        createTaskRequestBody: CreateTaskRequestBody
+    ): Response<CreateTaskResponse> {
+        return RetrofitInstance.USER_API_SERVICE.createTask(token, createTaskRequestBody)
+    }
+
+    suspend fun getDepartments(token: String): Response<List<GetDepartmentsResponse>> {
+        return RetrofitInstance.USER_API_SERVICE.getDepartments(token)
+    }
+
+    suspend fun getActivities(token: String): Response<List<GetActivitiesResponse>> {
+        return RetrofitInstance.USER_API_SERVICE.getActivities(token)
+    }
+
+    suspend fun updateProfile(
+        token: String,
+        updateProfileRequestBody: updateProfileRequestBody
+    ): Response<updateProfileResponse> {
+        return RetrofitInstance.USER_API_SERVICE.updateProfile(token, updateProfileRequestBody)
     }
 
 }

@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/pattern_background"
-    tools:context="com.zoltanlorinczi.project_retrofit.MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        style="@style/Theme.Material3.DynamicColors.Dark"
-        android:layout_width="181dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="64dp"
-        android:text="Activities"
-        android:textColor="#000000"
-        android:textSize="35sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_activities"
+        android:layout_width="409dp"
+        android:layout_height="620dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:itemCount="10"
+        tools:listitem="@layout/activities_list_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
