@@ -43,4 +43,10 @@ interface UserApiService {
     // erre error - cannot contain body elements non body type
     ): Response<List<GetActivitiesResponse>>
 
+    @POST(BackendConstants.UPDATE_PROFILE_URL)
+    suspend fun updateProfile(
+        @Header(BackendConstants.HEADER_TOKEN) token: String,
+        @Body updateProfileRequestBody: updateProfileRequestBody
+    ): Response<updateProfileResponse>
+
 }

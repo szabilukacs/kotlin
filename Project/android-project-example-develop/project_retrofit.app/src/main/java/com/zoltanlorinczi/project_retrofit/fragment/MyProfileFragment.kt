@@ -73,6 +73,7 @@ class MyProfileFragment : Fragment() {
         val image = App.sharedPreferences.getStringValue(SharedPreferencesManager.KEY_IMAGE, "null")
 
         val button = binding.buttonLogOut
+        val editButton = binding.floatingActionButtonEditProfile
 
         binding.firstName.text = first_name
         binding.lastName.text = last_name
@@ -96,6 +97,12 @@ class MyProfileFragment : Fragment() {
             transaction.commit()
 
 
+        }
+        editButton.setOnClickListener{
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.nav_host_fragment, EditProfileFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
         // image with Glide
