@@ -35,4 +35,12 @@ interface UserApiService {
 
     @GET(BackendConstants.GET_DEPARTMENTS)
     suspend fun getDepartments(@Header(BackendConstants.HEADER_TOKEN) token: String): Response<List<GetDepartmentsResponse>>
+
+    @GET(BackendConstants.GET_ACTIVITIES)
+    suspend fun getActivities(
+        @Header(BackendConstants.HEADER_TOKEN) token: String
+       // @Body getActivitiesRequestBody: GetActivitiesRequestBody
+    // erre error - cannot contain body elements non body type
+    ): Response<List<GetActivitiesResponse>>
+
 }

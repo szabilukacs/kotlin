@@ -27,7 +27,6 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 class GroupFragment : Fragment(R.layout.fragment_group) {
 
     // Groupnal csak a csoportok mennek a BE-nel, eleg az most
-    // Most groupnal ez
     // Sima profile update
     // Activitiesnel is csak sima lekeres
 
@@ -57,7 +56,7 @@ class GroupFragment : Fragment(R.layout.fragment_group) {
             adapter.setData(departmentsViewModel.products.value as ArrayList<GetDepartmentsResponse>)
             adapter.notifyDataSetChanged()
         }
-        
+
         return view
     }
 
