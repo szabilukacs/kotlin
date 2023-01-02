@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         // Bottom Navigationhoz
         handleNavigation(myBottomNavigationView)
-        // mikor mutassa, mikor ne a BottomNavigationt
+        // Kezeli, hogy mikor mutassa, mikor ne a BottomNavigationt
         showBottomNavigationMenuHandler(
             myBottomNavigationView,
             navController

@@ -2,7 +2,7 @@ package com.zoltanlorinczi.project_retrofit.api.model
 
 import com.google.gson.annotations.SerializedName
 
-class updateProfileResponse(
+class UpdateProfileResponse(
     @SerializedName("message")
     var message: String,
 ) {

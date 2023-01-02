@@ -39,11 +39,10 @@ class GetMyUserViewModel(private val repository: ThreeTrackerRepository) : ViewM
                     Log.d(TAG, "GetMyUser response: ${response.body()}")
                     token_splashez = true;
 
-                    // kulon fgv-be tenni majd
                     val ID = response.body()?.id
                     val last_name = response.body()?.last_name
                     val first_name = response.body()?.first_name
-                    val email= response.body()?.email
+                    val email = response.body()?.email
                     val type = response.body()?.type
                     val location = response.body()?.location
                     val phone_number = response.body()?.phone_number
@@ -105,9 +104,6 @@ class GetMyUserViewModel(private val repository: ThreeTrackerRepository) : ViewM
                         )
                     }
 
-
-
-
                 } else {
                     Log.d(TAG, "GetMyUser error response: ${response?.errorBody()}")
                     token_splashez = false;
@@ -118,10 +114,4 @@ class GetMyUserViewModel(private val repository: ThreeTrackerRepository) : ViewM
             }
         }
     }
-
-    private fun saveUserData()
-    {
-
-    }
-
 }

@@ -16,8 +16,6 @@ import com.zoltanlorinczi.project_retrofit.api.model.TaskResponse
 import com.zoltanlorinczi.project_retrofit.manager.SharedPreferencesManager
 
 
-
-
 /**
  * Author:  Zoltan Lorinczi
  * Date:    12/6/2021
@@ -81,11 +79,6 @@ class TasksListAdapter(
     // 2. Called only a few times = number of items on screen + a few more ones
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimpleDataViewHolder {
         return when (viewType) {
-//            TaskListItemType.SIMPLE.value -> {
-//                val itemView = LayoutInflater.from(parent.context)
-//                    .inflate(R.layout.simple_task_list_item, parent, false)
-//                SimpleDataViewHolder(itemView)
-//            }
             TaskListItemType.COMPLEX.value -> {
                 val itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.tasks_list_item, parent, false)
@@ -101,11 +94,6 @@ class TasksListAdapter(
     override fun getItemViewType(position: Int): Int {
         val currentItem = list[position]
         return TaskListItemType.COMPLEX.value
-//        return if (currentItem.status == 0) {
-//            TaskListItemType.SIMPLE.value
-//        } else {
-//            TaskListItemType.COMPLEX.value
-//        }
     }
 
     // 3. Called many times, when we scroll the list
@@ -131,19 +119,22 @@ class TasksListAdapter(
                 2 -> {
                     complexHolder.taskPriorityTextView.setBackgroundColor(Color.GREEN)
                 }
+                3 -> {
+                    complexHolder.taskPriorityTextView.setBackgroundColor(Color.BLUE)
+                }
             }
 
             Glide.with(context)
-                //.load(R.drawable.ic_launcher_background)
-                .load(App.sharedPreferences.getStringValue(SharedPreferencesManager.KEY_IMAGE,"null"))
+                .load(
+                    App.sharedPreferences.getStringValue(
+                        SharedPreferencesManager.KEY_IMAGE,
+                        "null"
+                    )
+                )
                 .placeholder(R.drawable.ic_launcher_background)
                 .override(100, 100)
                 .into(complexHolder.taskOwnerProfileImage)
         }
-//        else {
-//            val currentItem = list[position]
-//            holder.taskTitleTextView.text = currentItem.title
-//        }
     }
 
     override fun getItemCount() = list.size
@@ -154,7 +145,6 @@ class TasksListAdapter(
     }
 
     private enum class TaskListItemType(val value: Int) {
-        SIMPLE(0),
         COMPLEX(1)
     }
 }
