@@ -12,11 +12,8 @@ import com.zoltanlorinczi.project_retorfit.R
 import com.zoltanlorinczi.project_retrofit.App
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
 import com.zoltanlorinczi.project_retrofit.manager.SharedPreferencesManager
-import com.zoltanlorinczi.project_retrofit.viewmodel.CreateTaskViewModel
-import com.zoltanlorinczi.project_retrofit.viewmodel.CreateTaskViewModelFactory
 import com.zoltanlorinczi.project_retrofit.viewmodel.UpdateProfileViewModel
 import com.zoltanlorinczi.project_retrofit.viewmodel.UpdateProfileViewvModelFactory
-import java.lang.NumberFormatException
 
 class EditProfileFragment : Fragment() {
 

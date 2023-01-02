@@ -25,7 +25,7 @@ data class CreateTaskRequestBody(
     var departmentId: Int,
 
     @SerializedName("status")
-    // A BE csak szamokat ment el
+    // A Backend csak szamokat ment el
     var status: Int,
 
     @SerializedName("progress")

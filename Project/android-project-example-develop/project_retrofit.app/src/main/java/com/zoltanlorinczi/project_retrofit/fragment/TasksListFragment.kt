@@ -71,8 +71,6 @@ class TasksListFragment : Fragment(R.layout.fragment_tasks_list),
                 DividerItemDecoration.VERTICAL
             )
         )
-        val snapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(recyclerView)
         recyclerView.itemAnimator = SlideInUpAnimator()
         recyclerView.setHasFixedSize(true)
     }

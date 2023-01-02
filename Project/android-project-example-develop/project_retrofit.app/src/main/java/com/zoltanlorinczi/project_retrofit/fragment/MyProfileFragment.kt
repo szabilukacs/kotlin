@@ -51,10 +51,6 @@ class MyProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //
-        // Button a log outhoz meg
-        // ott torolni a tokent, majd attenni a log inhez
-
         val binding = FragmentMyProfileBinding.inflate(inflater, container, false)
 
         val ID = App.sharedPreferences.getIntValue(SharedPreferencesManager.KEY_ID, 0)
@@ -98,7 +94,7 @@ class MyProfileFragment : Fragment() {
 
 
         }
-        editButton.setOnClickListener{
+        editButton.setOnClickListener {
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.nav_host_fragment, EditProfileFragment())
             transaction.addToBackStack(null)

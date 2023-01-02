@@ -26,10 +26,6 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 class GroupFragment : Fragment(R.layout.fragment_group) {
 
-    // Groupnal csak a csoportok mennek a BE-nel, eleg az most
-    // Sima profile update
-    // Activitiesnel is csak sima lekeres
-
     private val TAG: String = javaClass.simpleName
 
     private lateinit var departmentsViewModel: GetDepartmentsViewModel

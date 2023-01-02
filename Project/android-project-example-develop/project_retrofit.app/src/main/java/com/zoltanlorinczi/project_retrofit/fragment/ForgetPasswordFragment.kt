@@ -11,9 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.zoltanlorinczi.project_retorfit.R
-import com.zoltanlorinczi.project_retrofit.App
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
-import com.zoltanlorinczi.project_retrofit.manager.SharedPreferencesManager
 import com.zoltanlorinczi.project_retrofit.viewmodel.ForgetPassViewModel
 import com.zoltanlorinczi.project_retrofit.viewmodel.ForgetPassViewModelFactory
 
@@ -49,7 +47,6 @@ class ForgetPasswordFragment : Fragment() {
             forgetPassViewModel.isSuccessful.observe(this.viewLifecycleOwner) {
                 Log.d(TAG, "Password send to the email successfully = $it")
                 if (it) {
-                    // uzenettel menjen at ide majd, hogy sikeres volt
                     findNavController().navigate(R.id.loginFragment)
                 }
             }

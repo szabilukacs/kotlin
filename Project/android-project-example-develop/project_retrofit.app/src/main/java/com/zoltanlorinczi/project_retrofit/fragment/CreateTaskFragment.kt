@@ -8,16 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.zoltanlorinczi.project_retorfit.R
-import com.zoltanlorinczi.project_retorfit.databinding.FragmentCreateTaskBinding
-import com.zoltanlorinczi.project_retrofit.App
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
-import com.zoltanlorinczi.project_retrofit.manager.SharedPreferencesManager
 import com.zoltanlorinczi.project_retrofit.viewmodel.CreateTaskViewModel
 import com.zoltanlorinczi.project_retrofit.viewmodel.CreateTaskViewModelFactory
-import java.lang.Error
-import java.lang.Exception
 import java.lang.NumberFormatException
 
 class CreateTaskFragment : Fragment() {
@@ -25,7 +19,6 @@ class CreateTaskFragment : Fragment() {
     private val TAG: String = javaClass.simpleName
 
     private lateinit var createTaskViewModel: CreateTaskViewModel
-//    lateinit var binding: FragmentCreateTaskBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

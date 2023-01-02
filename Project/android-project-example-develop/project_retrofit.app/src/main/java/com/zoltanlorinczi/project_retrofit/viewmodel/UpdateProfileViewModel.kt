@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zoltanlorinczi.project_retrofit.App
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
-import com.zoltanlorinczi.project_retrofit.api.model.CreateTaskRequestBody
-import com.zoltanlorinczi.project_retrofit.api.model.updateProfileRequestBody
+import com.zoltanlorinczi.project_retrofit.api.model.UpdateProfileRequestBody
 import com.zoltanlorinczi.project_retrofit.manager.SharedPreferencesManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,7 +26,7 @@ class UpdateProfileViewModel(private val repository: ThreeTrackerRepository) : V
         phoneNumber: String,
         imageUrl: String,
     ) {
-        val requestBody = updateProfileRequestBody(
+        val requestBody = UpdateProfileRequestBody(
             lastName, firstName, location, phoneNumber, imageUrl
         )
         viewModelScope.launch {
@@ -35,7 +34,7 @@ class UpdateProfileViewModel(private val repository: ThreeTrackerRepository) : V
         }
     }
 
-    private suspend fun executeUpdateProfile(requestBody: updateProfileRequestBody) {
+    private suspend fun executeUpdateProfile(requestBody: UpdateProfileRequestBody) {
         try {
             val token: String? = App.sharedPreferences.getStringValue(
                 SharedPreferencesManager.KEY_TOKEN,

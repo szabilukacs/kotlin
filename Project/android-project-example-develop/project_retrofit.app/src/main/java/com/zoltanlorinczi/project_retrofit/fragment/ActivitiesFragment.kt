@@ -12,15 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zoltanlorinczi.project_retorfit.R
 import com.zoltanlorinczi.project_retrofit.adapter.ActivitiesAdapter
-import com.zoltanlorinczi.project_retrofit.adapter.DepartmentListAdapter
 import com.zoltanlorinczi.project_retrofit.api.ThreeTrackerRepository
-import com.zoltanlorinczi.project_retrofit.api.model.GetActivitiesRequestBody
 import com.zoltanlorinczi.project_retrofit.api.model.GetActivitiesResponse
-import com.zoltanlorinczi.project_retrofit.api.model.GetDepartmentsResponse
 import com.zoltanlorinczi.project_retrofit.viewmodel.ActivitiesViewModel
 import com.zoltanlorinczi.project_retrofit.viewmodel.ActivitiesViewModelFactory
-import com.zoltanlorinczi.project_retrofit.viewmodel.GetDepartmentsViewModel
-import com.zoltanlorinczi.project_retrofit.viewmodel.GetDepartmentsViewModelFactory
 
 class ActivitiesFragment : Fragment() {
 

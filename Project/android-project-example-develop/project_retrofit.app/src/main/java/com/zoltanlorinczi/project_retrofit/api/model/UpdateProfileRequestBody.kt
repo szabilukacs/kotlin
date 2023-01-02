@@ -2,7 +2,7 @@ package com.zoltanlorinczi.project_retrofit.api.model
 
 import com.google.gson.annotations.SerializedName
 
-data class updateProfileRequestBody(
+data class UpdateProfileRequestBody(
     @SerializedName("lastName")
     var lastName: String,
 
